@@ -11,8 +11,6 @@ import program2 from "../assets/images/programmes_2.webp";
 import { motion } from "framer-motion";
 import { ImageWithOverlay } from "../components/ui/ImageOverlay";
 
-// Category header images, min. 1400x800px — only these two categories have one per the imagery spec.
-
 const CATEGORY_HEADER_IMAGES: Partial<
   Record<(typeof PROGRAMME_CATEGORIES)[number], string>
 > = {
@@ -40,18 +38,33 @@ export function ProgrammesPage() {
 
       {PROGRAMME_CATEGORIES.map((category, sectionIndex) => {
         const headerImage = CATEGORY_HEADER_IMAGES[category];
+        const isNavy = category === "Legal and Compliance";
 
         return (
           <section
             key={category}
             className={
-              sectionIndex % 2 === 1
-                ? "border-t border-line bg-surface-alt py-20"
-                : "py-20"
+              isNavy
+                ? "border-y border-line bg-navy py-20"
+                : sectionIndex % 2 === 1
+                  ? "border-t border-line bg-surface-alt py-20"
+                  : "py-20"
             }
           >
             <Container>
-              <SectionHeading title={category} />
+              {isNavy ? (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                    Programmes
+                  </p>
+
+                  <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                    {category}
+                  </h2>
+                </div>
+              ) : (
+                <SectionHeading title={category} />
+              )}
 
               {headerImage && (
                 <motion.div
@@ -62,12 +75,12 @@ export function ProgrammesPage() {
                     delay: 0.3,
                     ease: "easeOut",
                   }}
-                  className="mt-6 overflow-hidden rounded-3xl"
+                  className="group mt-6 overflow-hidden rounded-3xl"
                 >
                   <ImageWithOverlay
                     src={headerImage}
                     alt={category}
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                   />
                 </motion.div>
               )}

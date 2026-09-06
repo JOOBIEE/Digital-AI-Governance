@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { FaLinkedin, FaTiktok, FaInstagram } from "react-icons/fa";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-dga.png";
 import { NAV_LINKS } from "../../data/navigation";
 import { SITE_CONFIG } from "../../data/siteConfig";
 import { Container } from "./Container";
@@ -63,12 +63,18 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <Link to="/privacy-policy" className="text-sm text-white/80 hover:text-white">
+                <Link
+                  to="/privacy-policy"
+                  className="text-sm text-white/80 hover:text-white"
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms-of-use" className="text-sm text-white/80 hover:text-white">
+                <Link
+                  to="/terms-of-use"
+                  className="text-sm text-white/80 hover:text-white"
+                >
                   Terms of Use
                 </Link>
               </li>

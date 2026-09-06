@@ -1,4 +1,11 @@
-import { FiCpu, FiTrendingUp, FiDatabase, FiShield, FiAward, FiFileText } from "react-icons/fi";
+import {
+  FiCpu,
+  FiTrendingUp,
+  FiDatabase,
+  FiShield,
+  FiAward,
+  FiFileText,
+} from "react-icons/fi";
 import type { AdvisoryService } from "../types/content";
 
 export const SERVICES: AdvisoryService[] = [

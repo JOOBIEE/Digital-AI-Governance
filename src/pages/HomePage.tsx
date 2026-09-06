@@ -320,20 +320,38 @@ export function HomePage() {
         </Container>
       </section>
 
-      <section className="py-24">
+      <section className="bg-navy py-24">
         <Container>
-          <SectionHeading
-            eyebrow="Why Digital Governance Africa?"
-            title="Governance Expertise. African Perspective. Practical Transformation."
-            subtitle="We combine governance, law, policy, technology and leadership expertise to help organisations address digital opportunities and emerging risks with confidence."
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              Why Digital Governance Africa?
+            </p>
+
+            <h2 className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Governance Expertise. African <br /> Perspective. Practical
+              Transformation.
+            </h2>
+
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/75">
+              We combine governance, law, policy, technology and leadership
+              expertise to help organisations address digital opportunities and
+              emerging risks with confidence.
+            </p>
+          </motion.div>
+
           <div className="mt-10 grid gap-x-8 gap-y-4 sm:grid-cols-2">
             {STRENGTHS.map((strength) => (
               <div key={strength} className="flex items-start gap-3">
                 <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
                   <FiCheck aria-hidden size={12} />
                 </span>
-                <p className="text-sm text-ink-muted">{strength}</p>
+
+                <p className="text-sm text-white/75">{strength}</p>
               </div>
             ))}
           </div>
