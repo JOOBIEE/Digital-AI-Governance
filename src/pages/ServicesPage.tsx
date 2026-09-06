@@ -1,31 +1,29 @@
+import { useState } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
 import { PageMeta } from "../components/seo/PageMeta";
 import { Container } from "../components/layout/Container";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import { Card } from "../components/ui/Card";
 import { Reveal } from "../components/ui/Reveal";
-import { staggerDelay } from "../lib/motion";
 import { SERVICES } from "../data/services";
 import servicesHero from "../assets/images/Services_top_hero.webp";
 import { ImageWithOverlay } from "../components/ui/ImageOverlay";
+import { cn } from "../lib/cn";
+
+const SLIDE_GAP_PX = 24;
 
 export function ServicesPage() {
-  const serviceGroups = [
-    {
-      services: SERVICES.slice(0, 2),
-      background: "bg-white",
-      dark: false,
-    },
-    {
-      services: SERVICES.slice(2, 4),
-      background: "bg-navy",
-      dark: true,
-    },
-    {
-      services: SERVICES.slice(4, 6),
-      background: "bg-surface-alt",
-      dark: false,
-    },
-  ];
+  const total = SERVICES.length;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  function goTo(nextIndex: number, nextDirection: number) {
+    setDirection(nextDirection);
+    setActiveIndex((nextIndex + total) % total);
+  }
+
+  const activeService = SERVICES[activeIndex];
 
   return (
     <>
@@ -52,59 +50,114 @@ export function ServicesPage() {
       </section>
 
       {/* Services */}
-      {serviceGroups.map((group, groupIndex) => (
-        <section key={groupIndex} className={`${group.background} py-20`}>
-          <Container className="space-y-10">
-            {group.services.map((service, index) => {
-              const serviceIndex = groupIndex * 2 + index;
+      <section className="bg-white py-20">
+        <Container>
+          <Reveal>
+            <div className="relative flex items-center gap-4 sm:gap-6">
+              <button
+                type="button"
+                onClick={() => goTo(activeIndex - 1, -1)}
+                aria-label="Previous service"
+                className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-gold hover:text-gold"
+              >
+                <FiChevronLeft aria-hidden size={20} />
+              </button>
 
-              return (
-                <Reveal key={service.slug} delayMs={staggerDelay(serviceIndex)}>
-                  <Card className="grid gap-8 lg:grid-cols-[1fr_1.3fr]">
-                    <div>
-                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gold/10 text-gold">
-                        <service.icon aria-hidden size={20} />
-                      </span>
-
-                      <h2 className="mt-4 text-xl font-semibold text-ink">
-                        {service.title}
-                      </h2>
-
-                      <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                        {service.summary}
-                      </p>
-                    </div>
-
-                    <div className="grid gap-6 border-t border-line pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <div className="relative grid flex-1 overflow-hidden">
+                <AnimatePresence initial={false} custom={direction}>
+                  <motion.div
+                    key={activeService.slug}
+                    custom={direction}
+                    initial={{
+                      x:
+                        direction > 0
+                          ? `calc(100% + ${SLIDE_GAP_PX}px)`
+                          : `calc(-100% - ${SLIDE_GAP_PX}px)`,
+                    }}
+                    animate={{ x: "0%" }}
+                    exit={{
+                      x:
+                        direction > 0
+                          ? `calc(-100% - ${SLIDE_GAP_PX}px)`
+                          : `calc(100% + ${SLIDE_GAP_PX}px)`,
+                    }}
+                    transition={{ duration: 0.5, ease: [0.65, 0, 0.35, 1] }}
+                    className="col-start-1 row-start-1"
+                  >
+                    <Card
+                      variant="dark"
+                      hoverEffect={false}
+                      className="grid gap-8 lg:grid-cols-[1fr_1.3fr]"
+                    >
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                          Services may include
-                        </p>
+                        <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gold/10 text-gold">
+                          <activeService.icon aria-hidden size={20} />
+                        </span>
 
-                        <ul className="mt-3 grid gap-1.5 text-sm text-ink-muted sm:grid-cols-2">
-                          {service.capabilities.map((capability) => (
-                            <li key={capability}>{capability}</li>
-                          ))}
-                        </ul>
-                      </div>
+                        <h2 className="mt-4 text-xl font-semibold text-white">
+                          {activeService.title}
+                        </h2>
 
-                      <div className="rounded-lg bg-gold/10 p-4">
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                          Outcome
-                        </p>
-
-                        <p className="mt-1.5 text-sm leading-relaxed text-ink">
-                          {service.outcome}
+                        <p className="mt-2 text-sm leading-relaxed text-white/70">
+                          {activeService.summary}
                         </p>
                       </div>
-                    </div>
-                  </Card>
-                </Reveal>
-              );
-            })}
-          </Container>
-        </section>
-      ))}
+
+                      <div className="grid gap-6 border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                            Services may include
+                          </p>
+
+                          <ul className="mt-3 grid gap-1.5 text-sm text-white/70 sm:grid-cols-2">
+                            {activeService.capabilities.map((capability) => (
+                              <li key={capability}>{capability}</li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="rounded-lg bg-gold/10 p-8">
+                          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                            Outcome
+                          </p>
+
+                          <p className="mt-1.5 text-sm leading-relaxed text-white">
+                            {activeService.outcome}
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => goTo(activeIndex + 1, 1)}
+                aria-label="Next service"
+                className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-gold hover:text-gold"
+              >
+                <FiChevronRight aria-hidden size={20} />
+              </button>
+            </div>
+
+            <div className="mt-6 flex justify-center gap-2">
+              {SERVICES.map((service, index) => (
+                <button
+                  key={service.slug}
+                  type="button"
+                  onClick={() => goTo(index, index > activeIndex ? 1 : -1)}
+                  aria-label={`Go to ${service.title}`}
+                  className={cn(
+                    "h-2 w-2 cursor-pointer rounded-full transition-colors",
+                    index === activeIndex ? "bg-gold" : "bg-line",
+                  )}
+                />
+              ))}
+            </div>
+          </Reveal>
+        </Container>
+      </section>
     </>
   );
 }

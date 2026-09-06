@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo-dga.png";
 import { NAV_LINKS } from "../../data/navigation";
 import { Container } from "./Container";
 import { MobileMenu } from "./MobileMenu";
@@ -43,7 +43,7 @@ export function Header() {
             alt="Digital Governance Africa"
             className={cn(
               "w-auto transition-[height] duration-250 ease-standard",
-              scrolled ? "h-12" : "h-16",
+              scrolled ? "h-44" : "h-44",
             )}
           />
         </RouterNavLink>
