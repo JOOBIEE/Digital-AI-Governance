@@ -25,10 +25,10 @@ export function ArticleCard({
   const [revealed, setRevealed] = useState(false);
 
   const imageWrapperClasses = cn(
-    "relative -m-6 mb-4 overflow-hidden",
+    "relative -m-6 mb-4 overflow-hidden rounded-[25px]",
     featured
-      ? "aspect-[21/9] rounded-b-none sm:m-0 sm:rounded-lg"
-      : "aspect-video rounded-b-none sm:m-0 sm:rounded-lg",
+      ? "aspect-[21/9] sm:m-0 sm:rounded-[25px]"
+      : "aspect-video sm:m-0 sm:rounded-[25px]",
   );
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
