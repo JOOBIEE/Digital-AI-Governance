@@ -6,8 +6,8 @@ import { cn } from "../../lib/cn";
 type Variant = "primary" | "secondary" | "ghost";
 
 const VARIANT_CLASSES: Record<Variant, string> = {
-  primary: "bg-gold text-navy hover:bg-gold-deep",
-  secondary: "border border-gold text-gold hover:bg-gold hover:text-navy",
+  primary: "bg-gold text-white hover:bg-gold-deep",
+  secondary: "border border-white text-white hover:bg-gold hover:text-navy",
   ghost: "text-gold hover:bg-gold/10",
 };
 
@@ -29,9 +29,16 @@ interface ButtonAsLinkProps extends Omit<LinkProps, "className"> {
 
 type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
-export function Button({ variant = "primary", className, magnetic = false, ...props }: ButtonProps) {
+export function Button({
+  variant = "primary",
+  className,
+  magnetic = false,
+  ...props
+}: ButtonProps) {
   const classes = cn(BASE_CLASSES, VARIANT_CLASSES[variant], className);
-  const magneticRef = useMagneticButton<HTMLAnchorElement & HTMLButtonElement>();
+  const magneticRef = useMagneticButton<
+    HTMLAnchorElement & HTMLButtonElement
+  >();
   const ref = magnetic ? magneticRef : undefined;
 
   if ("to" in props && props.to !== undefined) {
@@ -39,5 +46,7 @@ export function Button({ variant = "primary", className, magnetic = false, ...pr
     return <Link to={to} ref={ref} className={classes} {...rest} />;
   }
 
-  return <button ref={ref} className={classes} {...(props as ButtonAsButtonProps)} />;
+  return (
+    <button ref={ref} className={classes} {...(props as ButtonAsButtonProps)} />
+  );
 }
