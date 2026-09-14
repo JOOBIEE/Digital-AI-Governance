@@ -1,78 +1,25 @@
 import { FiArrowRight } from "react-icons/fi";
 import { PageMeta } from "../components/seo/PageMeta";
 import { Container } from "../components/layout/Container";
-import { SectionHeading } from "../components/ui/SectionHeading";
 import { Button } from "../components/ui/Button";
-import { VALUES } from "../data/team";
 import aboutHeroImage from "../assets/images/abouthero-image.webp";
-import { FiZap, FiEye, FiTrendingUp, FiCheck } from "react-icons/fi";
+import { FiCheck } from "react-icons/fi";
 import { Card } from "../components/ui/Card";
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { SectionHeadingCentered } from "../components/ui/SectionHeadingCentered";
-import honJustice from "../assets/images/hon-justice.webp";
-import obeleTom from "../assets/images/Obele-tom.webp";
+import { Link } from "react-router-dom";
+import { DIRECTORS } from "../data/directorsData";
+import {
+  FOUNDATION_CARDS,
+  APPROACH_STEPS,
+  GOVERNANCE_AREAS,
+} from "../data/aboutPageData";
+import { Divider } from "../components/ui/Divider";
+import { AnimatedNumber } from "../components/ui/AnimatedNumber";
+import { Reveal } from "../components/ui/Reveal";
+import { SectionHeading } from "../components/ui/SectionHeading";
 
 export function AboutPage() {
-  const LEADERSHIP = [
-    {
-      name: "Obele Tom-George Akinniranye",
-      position: "Co-Founder and Director Legal, Digital Governace Africa",
-      location: "Nigeria/Continental",
-      image: obeleTom,
-    },
-    {
-      name: "Jacqueline Evbodaghe",
-      position: "Co-Founder and Programme Director, Digital Governace Africa",
-      location: "Kenya/East Africa",
-      image: honJustice,
-    },
-  ];
-  function AnimatedNumber({
-    value,
-    suffix = "",
-  }: {
-    value: number;
-    suffix?: string;
-  }) {
-    const ref = useRef<HTMLSpanElement>(null);
-    const isInView = useInView(ref, {
-      once: true,
-      amount: 0.5,
-    });
-
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-      if (!isInView) return;
-
-      const duration = 1500;
-      const startTime = performance.now();
-
-      function update(currentTime: number) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Smooth ease-out
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-        setCount(Math.floor(easedProgress * value));
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      }
-
-      requestAnimationFrame(update);
-    }, [isInView, value]);
-
-    return (
-      <span ref={ref}>
-        {count}
-        {suffix}
-      </span>
-    );
-  }
   return (
     <>
       <PageMeta
@@ -127,7 +74,20 @@ export function AboutPage() {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.6 }}
-              className="max-w-[850px] text-[36px] leading-[40px] font-extrabold tracking-[-0.8px] text-white sm:text-[48px] sm:leading-[52px] sm:tracking-tight lg:text-[60px] lg:leading-[60px]"
+              className="
+    max-w-[850px]
+    text-center
+    text-[36px]
+    leading-[40px]
+    font-extrabold
+    tracking-[-0.8px]
+    text-white
+    sm:text-[48px]
+    sm:leading-[52px]
+    lg:text-[60px]
+    lg:leading-[67px]
+    lg:tracking-tight
+  "
             >
               Shaping Trusted, Ethical & Sustainable Digital Institutions
             </motion.h1>
@@ -139,7 +99,7 @@ export function AboutPage() {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.6 }}
-              className="max-w-[760px] text-[16px] leading-[25px] font-normal text-white/90 sm:text-[18px] sm:leading-[28px]"
+              className=" mx-auto max-w-[760px] text-center text-[16px] leading-[25px] font-normal text-white/90 sm:max-w-[700px] sm:text-[18px] sm:leading-[28px] "
             >
               Digital Governance Africa (DGA) is a pan-African advisory and
               institutional capability initiative. We partner with national
@@ -148,7 +108,6 @@ export function AboutPage() {
               governance structures, and resilient public administration systems
               tailored to the African continent.
             </motion.p>
-
             {/* Buttons */}
             <motion.div
               variants={{
@@ -182,88 +141,40 @@ export function AboutPage() {
 
       <section className="bg-white py-20 sm:py-24">
         <Container>
-          {/* Section heading */}
           <SectionHeadingCentered
             eyebrow="Our Foundation"
             title="Mission, Vision & Core Mandate"
             subtitle="Addressing systemic gaps between rapid technological adoption and the regulatory, legal, and operational capacities of African institutions."
           />
 
-          {/* Cards */}
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {/* Card 1 */}
-            <Card className="!p-6 text-left">
-              <div className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-gold/10 text-gold">
-                <FiZap aria-hidden size={20} />
-              </div>
+            {FOUNDATION_CARDS.map((card, index) => {
+              const Icon = card.icon;
 
-              <h3 className="mt-5 text-xl font-semibold text-ink">
-                Our Mission
-              </h3>
-
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                To equip African institutions with contextualized frameworks,
-                ethical technology standards, and institutional competence to
-                lead sovereign, trusted, and inclusive digital transformations.
-              </p>
-
-              <div className="my-6 h-px w-full bg-black/10" />
-
-              <p className="text-sm font-semibold text-gold">
-                Sovereign & Resilient Future
-              </p>
-            </Card>
-
-            {/* Card 2 */}
-            <Card className="!p-6 text-left">
-              <div className="flex h-11 w-11 items-center justify-center  rounded-[12px] bg-[#2563EB]/10 text-[#2563EB]">
-                <FiEye aria-hidden size={20} className="text-[#2563EB]" />
-              </div>
-
-              <h3 className="mt-5 text-xl font-semibold text-ink">
-                Our Vision
-              </h3>
-
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                An Africa where digital transformation is anchored in
-                accountability, where AI serves socioeconomic equity, and where
-                data sovereign assets foster sustainable economic prosperity.
-              </p>
-
-              <div className="my-6 h-px w-full bg-black/10" />
-
-              <p className="text-sm font-semibold text-[#2563EB]">
-                Responsible AI & Data Equity
-              </p>
-            </Card>
-
-            {/* Card 3 */}
-            <Card className="!p-6 text-left">
-              <div className="flex h-11 w-11 items-center justify-center rounded-[12px] bg-[#059669]/10 text-[#059669]">
-                <FiTrendingUp
-                  aria-hidden
-                  size={20}
-                  className="text-[#059669]"
-                />
-              </div>
-
-              <h3 className="mt-5 text-xl font-semibold text-ink">
-                African Realism
-              </h3>
-
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                We reject superficial boilerplate policies imported from abroad.
-                We develop frameworks built from the lived realities, legal
-                nuances, and operational infrastructure of African
-                organizations.
-              </p>
-
-              <div className="my-6 h-px w-full bg-black/10" />
-
-              <p className="text-sm font-semibold text-[#059669]">
-                Context- Driven Methodologies
-              </p>
-            </Card>
+              return (
+                <Reveal key={card.title} delayMs={Math.min(index * 100, 400)}>
+                  <Card className="flex h-full flex-col !p-6 text-left">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-[12px] ${card.iconBg} ${card.iconColor}`}
+                    >
+                      <Icon aria-hidden size={20} />
+                    </div>
+                    <h3 className="mt-5 text-xl font-semibold text-ink">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-muted">
+                      {card.description}
+                    </p>
+                    <div className="my-6 h-px w-full bg-black/10" />
+                    <p
+                      className={`text-sm font-semibold ${card.statementColor}`}
+                    >
+                      {card.statement}
+                    </p>
+                  </Card>
+                </Reveal>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -374,7 +285,7 @@ export function AboutPage() {
                     <AnimatedNumber value={54} suffix="+" />
                   </div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
-                    NATIONS IN SCOPE{" "}
+                    NATIONS IN SCOPE
                   </p>
 
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
@@ -433,53 +344,176 @@ export function AboutPage() {
         </Container>
       </section>
 
-      <div className="mx-auto mt-12 grid  gap-x-8 gap-y-12 sm:grid-cols-2">
-        {LEADERSHIP.map((person) => (
-          <div key={person.name}>
-            {/* Image */}
-            <div className="relative mx-auto w-[100%]">
-              {/* Placeholder */}
-              <div className="aspect-[4/5] overflow-hidden rounded-[25px] bg-surface-alt">
-                <img
-                  src={person.image}
-                  alt={person.name}
-                  className="h-full w-full object-cover"
-                />
-              </div>
+      <section className="bg-white  py-20 sm:py-24">
+        <Container>
+          <SectionHeadingCentered
+            eyebrow="Governance & Stewardship"
+            title="Distinguished Board of Directors"
+            subtitle="Guiding continental strategy, statutory oversight, and sovereign alignment across 54 African nations"
+          />
 
-              {/* Country / Continent tag */}
-              <span className="absolute bottom-4 left-4 rounded-full bg-gold px-3 py-1.5 text-xs font-semibold text-navy">
-                {person.location}
-              </span>
-            </div>
+          <div className="mt-12 grid px-12 gap-6 sm:grid-cols-2">
+            {DIRECTORS.map((person, index) => (
+              <Reveal key={person.slug} delayMs={Math.min(index * 100, 400)}>
+                <Link to={`/directors/${person.slug}`} className="block h-full">
+                  <Card className="group h-full overflow-hidden !p-0">
+                    <div className="relative overflow-hidden rounded-t-[25px]">
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
 
-            {/* Details */}
-            <div className="mx-auto mt-5 w-[80%] text-left">
-              <h3 className="text-xl font-bold text-navy">{person.name}</h3>
+                      <span className="absolute bottom-4 left-4 rounded-full bg-gold px-3 py-1.5 text-xs font-semibold text-white">
+                        {person.location}
+                      </span>
+                    </div>
 
-              <p className="mt-1 text-sm font-semibold text-gold">
-                {person.position}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+                    <div className="p-6 text-left">
+                      <h3 className="text-xl font-bold text-navy">
+                        {person.name}
+                      </h3>
 
-      <section className="py-20">
-        <Container className="flex flex-col items-center gap-6 text-center">
-          <h2 className="max-w-xl text-2xl font-bold text-ink sm:text-3xl">
-            Explore our executive programmes or get in touch with our team.
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button to="/programmes" variant="primary">
-              Explore Programmes <FiArrowRight aria-hidden size={16} />
-            </Button>
-            <Button to="/contact" variant="secondary">
-              Contact Us
-            </Button>
+                      <p className="mt-1 text-sm font-semibold text-gold">
+                        {person.position}
+                      </p>
+                    </div>
+                  </Card>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </section>
+
+      <section className="bg-surface-alt py-20 sm:py-24">
+        <Container>
+          <SectionHeadingCentered
+            eyebrow="Ethics & Values"
+            title="Our Guiding Institutional Principles"
+            subtitle="Every Engagement, curriculum, and technological solution we deploy is measured against four foundational tenets."
+          />
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {APPROACH_STEPS.map((step, index) => (
+              <Reveal key={step.number} delayMs={Math.min(index * 100, 400)}>
+                <Card className="flex h-full flex-col !p-6">
+                  <span className="text-sm font-bold tracking-[0.15em] text-gold">
+                    {step.number}
+                  </span>
+
+                  <h3 className="mt-5 text-xl font-bold text-navy">
+                    {step.title}
+                  </h3>
+
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-muted">
+                    {step.description}
+                  </p>
+                </Card>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-20 sm:py-24">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Our Expertise"
+              title="Leadership & Multi-Disciplinary Faculty"
+              subtitle="Bringing together former regulators, international jusrists,senior technologists,and enterprise governance directors."
+            />
+            <Button to="/programmes" variant="ghost">
+              View Executive Faculty & Programmes{" "}
+              <FiArrowRight aria-hidden size={16} />
+            </Button>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {GOVERNANCE_AREAS.map((area, index) => (
+              <Reveal key={area.title} delayMs={Math.min(index * 100, 400)}>
+                <Card className="overflow-hidden !p-0">
+                  {/* Image */}
+                  <div className="relative overflow-hidden rounded-t-[25px]">
+                    <img
+                      src={area.image}
+                      alt={area.title}
+                      className="block h-auto w-full"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 text-left">
+                    <h4 className="text-[12px] font-normal text-gold">
+                      {area.tag}
+                    </h4>
+                    <h3 className="text-xl font-bold text-navy">
+                      {area.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm  leading-relaxed text-ink-muted">
+                      {area.description1}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                      {area.description2}
+                    </p>
+                  </div>
+                </Card>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-navy py-20 sm:py-24 ">
+        <Container>
+          <div className="flex flex-col items-center text-center">
+            <SectionHeadingCentered
+              eyebrow="Join Our Network"
+              title="Ready to Build a Trusted, Resillient & Future-Ready Institution?"
+              subtitle="Partner with Digital Governance Africa to strengthen your digital governance, adopt AI
+                responsibly, and build sustainable sovereign capability."
+              className="
+          max-w-6xl
+          [&_h2]:text-white
+          [&_p:last-child]:mx-auto
+          [&_p:last-child]:max-w-2xl
+          [&_p:last-child]:text-white/80
+          sm:[&_h2]:whitespace-nowrap
+        "
+            />
+
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.6 }}
+              className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row"
+            >
+              <Button
+                to="/contact"
+                variant="primary"
+                magnetic
+                className="w-full px-5 py-3 text-sm sm:w-auto"
+              >
+                Schedule a Confidential Consultation
+                <FiArrowRight aria-hidden size={15} />
+              </Button>
+
+              <Button
+                to="/governova"
+                variant="secondary"
+                className="w-full px-5 py-3 text-sm sm:w-auto"
+              >
+                Discover GOVERNOVA AI™
+              </Button>
+            </motion.div>
+          </div>
+        </Container>
+      </section>
+      <Divider className=" bg-[#1E293B]" />
     </>
   );
 }

@@ -10,6 +10,7 @@ import { ArticlePage } from "./pages/ArticlePage";
 import { ContactPage } from "./pages/ContactPage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsPage } from "./pages/TermsPage";
+import DirectorPage from "./pages/DirectorPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 export function AppRoutes() {
@@ -17,6 +18,7 @@ export function AppRoutes() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
+        <Route path="/directors/:slug" element={<DirectorPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="services" element={<ServicesPage />} />
         <Route path="programmes" element={<ProgrammesPage />} />
