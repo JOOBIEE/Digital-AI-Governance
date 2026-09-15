@@ -7,6 +7,8 @@ import {
   FiGlobe,
   FiCheck,
   FiDownload,
+  FiClock,
+  FiArrowRight,
 } from "react-icons/fi";
 import { RiShieldCheckLine } from "react-icons/ri";
 import { motion } from "framer-motion";
@@ -39,9 +41,9 @@ export default function DirectorPage() {
   }
 
   return (
-    <main className="bg-white">
+    <main className="bg-surface-alt">
       {/* HERO / PROFILE */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <section className="bg-[radial-gradient(circle_at_top_left,_rgba(212,175,55,0.16),_transparent_45%)] bg-[#F8FAFC]  py-16 shadow-[0_12px_30px_-20px_rgba(0,0,0,0.35)] sm:py-20 lg:py-24">
         <Container>
           {/* Back link */}
           <Link
@@ -60,12 +62,12 @@ export default function DirectorPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="overflow-hidden rounded-[25px]"
+                className="overflow-hidden rounded-[25px] border border-white p-2 shadow-sm "
               >
                 <img
                   src={director.image}
                   alt={director.name}
-                  className="block h-auto w-full"
+                  className="block h-auto rounded-[25px] w-full"
                 />
               </motion.div>
 
@@ -77,16 +79,15 @@ export default function DirectorPage() {
                 className="mt-6 rounded-[25px] border border-black/10 bg-white p-6 shadow-sm sm:p-8"
               >
                 {/* PROFILE HEADER */}
-                <div className="flex flex-col -gap-2 border-b border-black/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center justify-between gap-4 border-b border-black/10 pb-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                    INSTITUTIONAL REGISTRY RECORD
+                    Professional Profile
                   </p>
 
-                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-ink-muted">
+                  <p className="shrink-0 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.15em] text-ink-muted">
                     REF: {director.reference}
                   </p>
                 </div>
-
                 {/* THREE COLUMN ROW */}
                 <div className="mt-6 grid auto-rows-max gap-4">
                   {/*POSITION*/}
@@ -179,8 +180,8 @@ export default function DirectorPage() {
                 </div>
 
                 {/* EXPERIENCE */}
-                <div className="mt-3 flex flex-col gap-3 pt-6 sm:flex-row sm:items-center sm:justify-between rounded-[8px] bg-surface-alt p-5">
-                  <h2 className="text-xs font-semibold text-navy/50 uppercase tracking-[0.2em]">
+                <div className="mt-3 flex flex-col gap-3  sm:flex-row sm:items-center sm:justify-between rounded-[8px] bg-surface-alt p-3">
+                  <h2 className="text-[11px] font-semibold text-navy/50 uppercase tracking-[0.2em]">
                     {director.experience.label}
                   </h2>
 
@@ -297,7 +298,7 @@ export default function DirectorPage() {
                       {card.title}
                     </p>
 
-                    <p className="mt-3 text-sm uppercase leading-relaxed text-ink-muted">
+                    <p className="mt-3 text-[11px] uppercase leading-relaxed text-ink-muted">
                       {card.text}
                     </p>
                   </Card>
@@ -305,6 +306,195 @@ export default function DirectorPage() {
               </div>
             </motion.div>
           </div>
+        </Container>
+      </section>
+
+      {/* CTA FORM */}
+      <section className="border-t border-[#E2E8F0] bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{
+              duration: 0.7,
+              ease: "easeOut",
+            }}
+            className="rounded-[25px] bg-[radial-gradient(circle_at_bottom_right,_rgba(212,175,55,0.16),_transparent_45%)] bg-white p-6 shadow-[0_15px_40px_-25px_rgba(0,0,0,0.35)] sm:p-8 lg:p-12"
+          >
+            <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+              {/* LEFT */}
+              <motion.div
+                initial={{ opacity: 0, x: -25 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.15,
+                  ease: "easeOut",
+                }}
+                className="max-w-xl"
+              >
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                  <span className="h-2 w-2 rounded-full bg-gold" />
+                  Confidential Consultation Request
+                </p>
+
+                <h2 className="mt-3 text-[36px] font-extrabold tracking-tight text-navy sm:text-4xl lg:text-5xl">
+                  Request an Institutional Advisory Session with {director.name}
+                </h2>
+
+                <p className="mt-5 text-sm leading-7 text-ink-muted sm:text-base">
+                  {director.ctadescription.text}
+                </p>
+
+                <div className="mt-8 space-y-5">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center text-gold">
+                      <RiShieldCheckLine aria-hidden size={18} />
+                    </span>
+
+                    <p className="text-sm leading-relaxed text-ink-muted">
+                      {director.ctalist?.list1}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center text-gold">
+                      <FiClock aria-hidden size={18} />
+                    </span>
+
+                    <p className="text-sm leading-relaxed text-ink-muted">
+                      {director.ctalist?.list2}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* RIGHT — FORM */}
+              <motion.div
+                initial={{ opacity: 0, x: 25 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.25,
+                  ease: "easeOut",
+                }}
+                className="rounded-[20px] bg-navy/[0.04] p-6 sm:p-8"
+              >
+                <form className="space-y-6">
+                  {/* Form Fields */}
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    {[
+                      {
+                        id: "firstName",
+                        label: director.ctaForm.firstLabel,
+                        placeholder: director.ctaForm.firstPlaceholder,
+                        type: "text",
+                      },
+                      {
+                        id: "lastName",
+                        label: director.ctaForm.secondLabel,
+                        placeholder: director.ctaForm.secondPlaceholder,
+                        type: "text",
+                      },
+                      {
+                        id: "email",
+                        label: director.ctaForm.thirdLabel,
+                        placeholder: director.ctaForm.thirdPlaceholder,
+                        type: "email",
+                      },
+                    ].map((field) => (
+                      <div key={field.id}>
+                        <label
+                          htmlFor={field.id}
+                          className="text-[11px] font-semibold text-navy/70"
+                        >
+                          {field.label}
+                        </label>
+
+                        <input
+                          id={field.id}
+                          name={field.id}
+                          type={field.type}
+                          placeholder={field.placeholder}
+                          className="mt-2 h-12 w-full rounded-[10px] border border-black/10 bg-white px-4 text-[14px] text-navy placeholder:text-ink-muted/60 outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/10"
+                        />
+                      </div>
+                    ))}
+
+                    {/* Enquiry Type */}
+                    <div>
+                      <label
+                        htmlFor="enquiryType"
+                        className="text-[11px] font-semibold text-navy/70"
+                      >
+                        {director.ctaForm.enquiryTypeLabel}
+                      </label>
+
+                      <select
+                        id="enquiryType"
+                        name="enquiryType"
+                        defaultValue=""
+                        className="mt-2 h-12 w-full rounded-[10px] border border-black/10 bg-white px-4 text-[14px] text-navy outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/10"
+                      >
+                        <option value="" disabled>
+                          Select Focus Domain
+                        </option>
+
+                        {director.ctaForm.enquiryTypes.map((type) => (
+                          <option key={type} value={type}>
+                            {type}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="text-[11px] font-semibold text-navy/70"
+                    >
+                      SCOPE OF BRIEFING / TERMS OF INQUIRY
+                    </label>
+
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      placeholder={director.ctaForm.messagePlaceholder}
+                      className="mt-2 w-full resize-none rounded-[10px] border border-black/10 bg-white px-4 py-3 text-[14px] leading-relaxed text-navy placeholder:text-ink-muted/60 outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/10"
+                    />
+                  </div>
+
+                  {/* Acknowledgement */}
+                  <label className="flex cursor-pointer items-center gap-3">
+                    <input
+                      type="checkbox"
+                      name="acknowledgement"
+                      required
+                      className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-gold"
+                    />
+
+                    <span className="text-xs leading-relaxed text-ink-muted">
+                      {director.ctaacknowledgement.text}
+                    </span>
+                  </label>
+
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    className="flex w-full items-center justify-center gap-2 rounded-[10px] bg-gold px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-gold/80"
+                  >
+                    TRANSMIT CONFIDENTIAL DOSSIER REQUEST
+                  </button>
+                </form>
+              </motion.div>
+            </div>
+          </motion.div>
         </Container>
       </section>
     </main>

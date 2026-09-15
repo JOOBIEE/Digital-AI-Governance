@@ -88,6 +88,32 @@ export const DIRECTORS = [
         text: "SPECIALIST DOMAINS",
       },
     ],
+    ctaForm: {
+      firstLabel: "PRINCIPAL REPRESENTATIVE",
+      firstPlaceholder: "H.E. Amb. or Minister Name",
+      secondLabel: "OFFICIAL DIPLOMATIC EMAIL",
+      secondPlaceholder: "representative@ministry.gov/.af",
+      thirdLabel: "SOVEREIGN INSTITUTION / MINISTRY",
+      thirdPlaceholder: "Ministry of Trade / Central Bank",
+      enquiryTypeLabel: "ADVISORY DOMAIN",
+      messageLabel: "SCOPE OF BREIFING / TERMS OF INQUIRY",
+      messagePlaceholder:
+        "Specify legislative agebda, bilateral objectives or consultation parameters...",
+      enquiryTypes: ["Sovereign Data Asset Trust rchitecture", "Other"],
+    },
+
+    ctadescription: {
+      text: "Reserved for government ministries, regulatory agencies, judiciaries, academic institutions, and corporate enterprises seeking counsel on AI law, robotic liability, data protection, and digital governance frameworks.",
+    },
+    ctalist: {
+      list1:
+        "Protected under Diplomatic Confidentiality Protocols (AfCFTA & AU Convention).",
+      list2: "Typical Secretariat review turn-around: 48 Business Hours.",
+    },
+
+    ctaacknowledgement: {
+      text: "Acknowledge that this submission is handled via DGA Sovereign Diplomatic Clearance protocols.",
+    },
   },
 
   {
@@ -101,48 +127,54 @@ export const DIRECTORS = [
 
     image: honJustice,
 
-    eyebrow: "DIRECTOR PROFILE",
+    eyebrow: "EXECUTIVE LEADERSHIP & GOVERNANCE PROGRAMMES",
 
-    reference: "DGA - DIR - PROGRAMMES",
+    reference: "DGA-DIR-GOV-02",
 
     specialties: [
-      "Digital Policy",
-      "Programme Strategy",
-      "Institutional Development",
+      "AI GOVERNANCE",
+      "DIGITAL GOVERNANCE",
+      "ENTERPRISE RISK",
+      "REGULATORY STRATEGY",
+      "PUBLIC POLICY TRANSFORMATION",
     ],
 
     quote:
-      "Africa's digital transformation must be grounded in institutional capacity, inclusion, accountability, and sustainable leadership.",
+      "Governance should never be viewed as a barrier to innovation. Well-designed governance enables innovation by creating trust, accountability, transparency and resilience. In the age of AI, governance is no longer simply about compliance—it is about protecting people, strengthening institutions and enabling societies to realise the benefits of technology responsibly.",
 
     about: [
-      "Jacqueline Evbodaghe is a programme and institutional development professional focused on strengthening the capacity of organisations to navigate complex digital transformation.",
+      "Jacqueline Evbodaghe is an internationally experienced Governance, Risk, Compliance and AI Governance executive with over 18 years of leadership experience advising Boards, regulators, governments and executive leadership teams on governance, regulatory strategy, enterprise risk management and institutional transformation. A lawyer by training and a recognised governance professional, Jacqueline has held multiple senior Pre-Approval Controlled Function appointments regulated by the Central Bank of Ireland, including Head of Compliance and Chief Risk Officer.",
 
-      "Her work brings together policy, programme strategy, institutional capability, and responsible technology adoption.",
+      "Throughout her career she has led governance programmes across regulated financial services sector - investment services, fund administration, custody, life insurance and financial markets, helping organisations navigate complex regulatory environments while strengthening resilience, accountability and sustainable growth.",
+
+      "As artificial intelligence transforms economies and public institutions, Jacqueline has expanded her practice to specialise in AI Governance, Digital Governance and Responsible Innovation. Her work focuses on translating emerging regulation—including the EU AI Act—into practical governance operating models, enterprise controls and leadership frameworks that enable organisations to deploy AI responsibly while maintaining public trust, regulatory compliance and ethical accountability.",
+
+      "Her advisory work extends beyond regulatory compliance. She helps organisations design governance systems that integrate strategy, technology, risk, ethics and public policy, recognising that AI overnance is fundamentally an organisational leadership challenge rather than simply a technology initiative.",
+
+      "Jacqueline is developing proprietary governance methodologies that bridge traditional corporate governance with modern AI assurance, enabling Boards and executive teams to govern emerging technologies with confidence.",
     ],
 
     profile: {
-      nationality: "African",
-      region: "East Africa",
-      practice: "Programme Strategy & Institutional Development",
+      position: "Co-Founder and Programme Director",
+      region: "West Africa",
+      practice: "Legal & Digital Governance",
     },
 
     expertise: [
-      "Digital transformation strategy",
-      "Programme development",
-      "Institutional capacity building",
-      "Public-sector innovation",
-      "Digital governance",
+      "Lawyer by Training & Recognised Governance Professional",
+      "Pre-Approval Controlled Function (PCF) Regulated Executive (Central Bank of Ireland)",
+      "Former Head of Compliance & Chief Risk Officer",
     ],
 
     contact: {
-      phone: "+254 000 000 0000",
+      phone: "+3528 684 77121",
       email: "info@thedigitalgovernanceafrica.org",
       website: "www.thedigitalgovernanceafrica.org",
     },
 
     experience: {
       label: "Experience",
-      years: 20,
+      years: 18,
     },
 
     actions: [
@@ -152,7 +184,7 @@ export const DIRECTORS = [
         variant: "primary",
       },
       {
-        label: "Download Academic Dossier (PDF)",
+        label: "Download Executive Dossier (PDF)",
         to: "/services",
         variant: "secondary",
       },
@@ -160,13 +192,41 @@ export const DIRECTORS = [
 
     cards: [
       {
-        title: "Areas of Practice",
-        text: "Programme strategy, institutional development and digital transformation.",
+        title: "18+",
+        text: "YEARS OF GOVERNANCE & RISK LEADERSHIP",
       },
       {
-        title: "Continental Focus",
-        text: "Developing practical capabilities for resilient and future-ready African institutions.",
+        title: "PCF",
+        text: "CENTRAL BANK OF IRELAND HEAD OF COMPLIANCE & CRO",
+      },
+      {
+        title: "17+",
+        text: "SPECIALIST DOMAINS AI RISK & PUBLIC POLICY",
       },
     ],
+    ctaForm: {
+      firstLabel: "PRINCIPAL REPRESENTATIVE",
+      firstPlaceholder: "H.E. Amb. / Director / C-Suite Officer",
+      secondLabel: "OFFICIAL INSTITUTIONAL EMAIL",
+      secondPlaceholder: "representative@institution.gov/.org",
+      thirdLabel: "SOVEREIGN ENTITY / ENTERPRISE",
+      thirdPlaceholder: "Central Bank / Ministry / Enterprise Board",
+      enquiryTypeLabel: "ADVISORY FOCUS DOMAIN",
+      messageLabel: "SCOPE OF BREIFING / TERMS OF INQUIRY",
+      messagePlaceholder:
+        "Specify governance objectives, institutional mandate, regulatory jurisdictions, or consultation parameters...",
+      enquiryTypes: ["AI Governance & Operating Models", "Other"],
+    },
+    ctadescription: {
+      text: "Reserved for government ministries, regulatory authorities, financial institutions, enterprise boards, and academic leadership seeking executive counsel on AI governance, EU AI Act alignment, enterprise risk models, and institutional transformation.",
+    },
+    ctalist: {
+      list1:
+        "Protected under Diplomatic & Sovereign Institutional Confidentiality Protocols.",
+      list2: "Typical Executive Secretariat turn-around: 48 Business Hours.",
+    },
+    ctaacknowledgement: {
+      text: "Acknowledge that this submission is handled via DGA Sovereign Protocol & Central Bank regulatory confidentiality standards.",
+    },
   },
 ];

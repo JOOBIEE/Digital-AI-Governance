@@ -5,6 +5,7 @@ interface SectionHeadingCenteredProps {
   title: string;
   subtitle: string;
   className?: string;
+  subtitleClassName?: string;
 }
 
 export function SectionHeadingCentered({
@@ -12,6 +13,7 @@ export function SectionHeadingCentered({
   title,
   subtitle,
   className,
+  subtitleClassName,
 }: SectionHeadingCenteredProps) {
   return (
     <div className={cn("mx-auto max-w-3xl text-center", className)}>
@@ -23,9 +25,16 @@ export function SectionHeadingCentered({
         {title}
       </h2>
 
-      <p className="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
-        {subtitle}
-      </p>
+      {subtitle && (
+        <p
+          className={cn(
+            "mt-4 text-base leading-relaxed text-ink-muted sm:text-lg",
+            subtitleClassName,
+          )}
+        >
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }

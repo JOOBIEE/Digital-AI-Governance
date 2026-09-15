@@ -20,6 +20,58 @@ import { Reveal } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 
 export function AboutPage() {
+  const strategicPoints = [
+    {
+      title: "Bridging Policy and Execution",
+      description:
+        "Transforming national strategies into operational operating models that teams can implement daily.",
+    },
+    {
+      title: "Preventing Algorithmic Harm",
+      description:
+        "Guarding against imported bias and ensuring AI tools deployed in public finance, healthcare, and education respect civil liberties.",
+    },
+    {
+      title: "Sovereignty and Data Capital",
+      description:
+        "Treating sovereign data as a national strategic asset rather than an unmonetized byproduct.",
+    },
+  ];
+  const stats = [
+    {
+      value: 54,
+      suffix: "+",
+      label: "NATIONS IN SCOPE",
+      description:
+        "Tailored for regional harmonization across AU directives and continental treaties.",
+      className: "pb-8",
+    },
+    {
+      value: 100,
+      suffix: "%",
+      label: "CONTEXTUALIZED",
+      description:
+        "Grounded in African legal, regulatory, and socio-economic frameworks.",
+      className: "border-l border-white/10 pb-8 pl-8",
+    },
+    {
+      value: 6,
+      suffix: "-Tier",
+      label: "FRAMEWORK™",
+      description:
+        "Discover, Design, Build, Implement, Enable, and Continuously Improve.",
+      className: "border-t border-white/10 pt-8",
+    },
+    {
+      value: null,
+      displayValue: "AI™",
+      label: "PROPRIETARY TECH",
+      description:
+        "Powered by GOVERNOVA AI™ for automated compliance and decision modeling.",
+      className: "border-l border-t border-white/10 pt-8 pl-8",
+      descriptionClass: "text-white/70",
+    },
+  ];
   return (
     <>
       <PageMeta
@@ -74,20 +126,7 @@ export function AboutPage() {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.6 }}
-              className="
-    max-w-[850px]
-    text-center
-    text-[36px]
-    leading-[40px]
-    font-extrabold
-    tracking-[-0.8px]
-    text-white
-    sm:text-[48px]
-    sm:leading-[52px]
-    lg:text-[60px]
-    lg:leading-[67px]
-    lg:tracking-tight
-  "
+              className="max-w-[850px] text-center text-[36px] leading-[40px] font-extrabold tracking-[-0.8px] text-white sm:text-[48px] sm:leading-[52px] lg:text-[60px] lg:leading-[67px] lg:tracking-tight"
             >
               Shaping Trusted, Ethical & Sustainable Digital Institutions
             </motion.h1>
@@ -108,6 +147,7 @@ export function AboutPage() {
               governance structures, and resilient public administration systems
               tailored to the African continent.
             </motion.p>
+
             {/* Buttons */}
             <motion.div
               variants={{
@@ -184,24 +224,17 @@ export function AboutPage() {
           <div className="flex flex-col gap-16 lg:flex-row lg:items-center lg:gap-20">
             {/* Left content */}
             <div className="flex-1 text-left">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                THE STRATEGIC REALITY
-              </p>
+              <SectionHeading
+                eyebrow="THE STRATEGIC REALITY"
+                title="Why Governance is the Linchpin of Africa's Digital Agenda"
+                subtitle="Billions are invested into digital infrastructure, broadband rollout, and government enterprise systems across the continent. Yet, up to 70% of high-level digital transformations fail to realize their intended social or operational impact."
+                titleClassName="text-white"
+                subtitleClassName="text-white/80"
+              />
 
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                Why Governance is the Linchpin of Africa's Digital Agenda
-              </h2>
-
-              <p className="mt-5 text-[16px] leading-relaxed text-[#94A3B8] sm:text-lg">
-                Billions are invested into digital infrastructure, broadband
-                rollout, and government enterprise systems across the continent.
-                Yet, up to 70% of high-level digital transformations fail to
-                realize their intended social or operational impact.
-              </p>
-
-              <p className="mt-5 text-[16px] leading-relaxed text-[#94A3B8] sm:text-lg">
+              <p className="mt-5 text-[16px] leading-relaxed text-white/80 sm:text-lg">
                 The bottleneck is rarely technology itself. The true barrier is{" "}
-                <strong className="font-semibold text-[#94A3B8]">
+                <strong className="font-semibold text-white">
                   institutional governance
                 </strong>
                 : unclear accountability lines, absence of data stewardship
@@ -210,62 +243,25 @@ export function AboutPage() {
               </p>
 
               {/* Supporting points */}
-              <div className="">
+              <div>
                 <div className="mt-6 space-y-4">
-                  {/* Point 1 */}
-                  <div className="flex items-start gap-4">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
-                      <FiCheck aria-hidden size={16} strokeWidth={2.5} />
-                    </span>
+                  {strategicPoints.map((point) => (
+                    <div key={point.title} className="flex items-start gap-4">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
+                        <FiCheck aria-hidden size={16} strokeWidth={2.5} />
+                      </span>
 
-                    <div>
-                      <h4 className="text-lg font-semibold text-white">
-                        Bridging Policy and Execution
-                      </h4>
+                      <div>
+                        <h4 className="text-lg font-semibold text-white">
+                          {point.title}
+                        </h4>
 
-                      <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
-                        Transforming national strategies into operational
-                        operating models that teams can implement daily.
-                      </p>
+                        <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
+                          {point.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Point 2 */}
-                  <div className="flex items-start gap-4">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
-                      <FiCheck aria-hidden size={16} strokeWidth={2.5} />
-                    </span>
-
-                    <div>
-                      <h4 className="text-lg font-semibold text-white">
-                        Preventing Algorithimic Harm
-                      </h4>
-
-                      <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
-                        Guarding against imported bias and ensuring AI tools
-                        deployed in public finance, healthcare, and education
-                        respect civil liberties.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Point 3 */}
-                  <div className="flex items-start gap-4">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
-                      <FiCheck aria-hidden size={16} strokeWidth={2.5} />
-                    </span>
-
-                    <div>
-                      <h4 className="text-lg font-semibold text-white">
-                        Sovereignty and Data Capital
-                      </h4>
-
-                      <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
-                        Treating sovereign data as a national strategic asset
-                        rather than an unmonetized byproduct.
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -278,66 +274,28 @@ export function AboutPage() {
                   The DGA Differences
                 </h4>
               </div>
+
               <div className="mt-10 grid grid-cols-2 gap-x-8">
-                {/* Stat 1 */}
-                <div className="pb-8">
-                  <div className="mt-3 text-4xl font-extrabold tracking-tight text-gold sm:text-5xl">
-                    <AnimatedNumber value={54} suffix="+" />
+                {stats.map((stat) => (
+                  <div key={stat.label} className={stat.className}>
+                    <div className="mt-3 text-4xl font-extrabold tracking-tight text-gold sm:text-5xl">
+                      {stat.value !== null ? (
+                        <AnimatedNumber
+                          value={stat.value}
+                          suffix={stat.suffix}
+                        />
+                      ) : (
+                        stat.displayValue
+                      )}
+                    </div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
+                      {stat.label}
+                    </p>
+                    <p className={"mt-3 text-sm leading-relaxed text-white"}>
+                      {stat.description}
+                    </p>
                   </div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
-                    NATIONS IN SCOPE
-                  </p>
-
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    Tailored for regional harmonization across AU directives and
-                    continental treaties.
-                  </p>
-                </div>
-
-                {/* Stat 2 */}
-                <div className="border-l border-white/10 pb-8 pl-8">
-                  <div className="mt-3 text-4xl font-extrabold tracking-tight text-gold sm:text-5xl">
-                    <AnimatedNumber value={100} suffix="%" />
-                  </div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
-                    CONTEXTUALIZED
-                  </p>
-
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    Grounded in African legal, regulatory, and socio-economic
-                    frameworks.
-                  </p>
-                </div>
-
-                {/* Stat 3 */}
-                <div className="border-t border-white/10 pt-8">
-                  <div className="mt-3 text-4xl font-extrabold tracking-tight text-gold sm:text-5xl">
-                    <AnimatedNumber value={6} suffix="-Tier" />
-                  </div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
-                    FRAMEWORK™
-                  </p>
-
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    Discover, Design, Build, Implement, Enable, and Continuously
-                    Improve.
-                  </p>
-                </div>
-
-                {/* Stat 4 */}
-                <div className="border-l border-white/10 border-t border-white/10 pt-8 pl-8">
-                  <div className="mt-3 text-4xl font-extrabold tracking-tight text-gold sm:text-5xl">
-                    <AnimatedNumber value={100} suffix="%" />
-                  </div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
-                    Proprietary tech
-                  </p>
-
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    Powered by GOVERNOVA AI™ for automated compliance and
-                    decision modeling.
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -474,14 +432,8 @@ export function AboutPage() {
               title="Ready to Build a Trusted, Resillient & Future-Ready Institution?"
               subtitle="Partner with Digital Governance Africa to strengthen your digital governance, adopt AI
                 responsibly, and build sustainable sovereign capability."
-              className="
-          max-w-6xl
-          [&_h2]:text-white
-          [&_p:last-child]:mx-auto
-          [&_p:last-child]:max-w-2xl
-          [&_p:last-child]:text-white/80
-          sm:[&_h2]:whitespace-nowrap
-        "
+              className="max-w-6xl [&_h2]:text-white [&_p:last-child]:mx-auto [&_p:last-child]:max-w-2xl [& _p:last-child]:text-white/80  sm:[&_h2]:whitespace-nowrap"
+              subtitleClassName="text-white/70"
             />
 
             <motion.div
