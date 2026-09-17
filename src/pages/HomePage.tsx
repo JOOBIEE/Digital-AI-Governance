@@ -20,7 +20,7 @@ import { ArticleCard } from "../components/cards/ArticleCard";
 import { ARTICLES } from "../data/articles";
 import { motion } from "framer-motion";
 import HeroImage from "../assets/images/hero-image.webp";
-import { Divider } from "../components/ui/Divider";
+import PageHero from "../components/home/PageHero";
 
 const WHAT_WE_DO = [
   {
@@ -160,113 +160,23 @@ export function HomePage() {
         title="Digital Governance Africa"
         description="We help governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
       />
-      <section className="relative overflow-hidden bg-navy">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <img
-            src={HeroImage}
-            alt="Hero Background Image"
-            className="h-full w-full object-cover"
-          />
 
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-navy/25" />
-        </div>
-
-        {/* Hero content */}
-        <Container className="relative z-10 flex min-h-[680px] items-center justify-center py-24 sm:py-28">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.15,
-                },
-              },
-            }}
-            className="mx-auto flex max-w-6xl flex-col items-center text-center"
-          >
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.5 }}
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-gold"
-            >
-              Digital Governance Africa
-            </motion.p>
-
-            <motion.h1
-              variants={{
-                hidden: { opacity: 0, y: 25 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6 }}
-              className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl "
-            >
-              Governing Africa's Digital Future
-            </motion.h1>
-
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6 }}
-              className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80"
-            >
-              We help governments, institutions and organisations strengthen
-              digital governance, adopt artificial intelligence responsibly and
-              build trusted, resilient and future-ready institutions.
-            </motion.p>
-
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6 }}
-              className="mt-8 flex flex-nowrap gap-2 sm:gap-3"
-            >
-              <Button
-                to="/services"
-                variant="primary"
-                magnetic
-                className="px-3 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm"
-              >
-                Explore Our Services
-                <FiArrowRight aria-hidden size={15} />
-              </Button>
-
-              <Button
-                to="/contact"
-                variant="secondary"
-                className="px-3 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm"
-              >
-                Partner With Us
-              </Button>
-            </motion.div>
-
-            {/* White divider */}
-            <Divider className="my-8 h-px w-24 bg-white/20" />
-
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 15 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.5 }}
-              className=" text-sm font-medium text-white/65"
-            >
-              Digital Governance &middot; Responsible AI &middot; Data
-              Governance &middot; Institutional Transformation
-            </motion.p>
-          </motion.div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Digital Governance Africa"
+        title="Governing Africa's Digital Future"
+        description="We help governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
+        backgroundImage={HeroImage}
+        primaryAction={{
+          label: "Explore Our Services",
+          to: "/services",
+        }}
+        secondaryAction={{
+          label: "Partner With Us",
+          to: "/contact",
+        }}
+        showDivider
+        metaText="Digital Governance · Responsible AI · Data Governance · Institutional Transformation"
+      />
 
       <section className="py-24">
         <Container>
@@ -331,28 +241,6 @@ export function HomePage() {
           </motion.div>
         </Container>
       </section>
-      {/* 
-      <section className="py-20">
-        <Container className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <SectionHeading title="Technology Alone Does Not Transform Institutions" />
-
-            <p className="mt-6 text-base leading-relaxed text-ink-muted">
-              Successful digital transformation requires trusted data,
-              responsible leadership, effective governance and the institutional
-              capability to turn innovation into sustainable value. Digital
-              Governance Africa brings these elements together through advisory
-              services, executive education, research, governance methodologies
-              and practical digital solutions.
-            </p>
-          </motion.div>
-        </Container>
-      </section> */}
 
       <section className="border-t border-line bg-surface-alt py-24">
         <Container>

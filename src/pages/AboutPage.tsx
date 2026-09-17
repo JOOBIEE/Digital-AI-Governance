@@ -18,6 +18,7 @@ import { Divider } from "../components/ui/Divider";
 import { AnimatedNumber } from "../components/ui/AnimatedNumber";
 import { Reveal } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
+import PageHero from "../components/home/PageHero";
 
 export function AboutPage() {
   const strategicPoints = [
@@ -79,105 +80,26 @@ export function AboutPage() {
         description="Digital Governance Africa is a Nigerian-based organisation advancing digital governance, responsible artificial intelligence and institutional transformation across Africa."
       />
 
-      <section className="relative overflow-hidden bg-navy">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <img
-            src={aboutHeroImage}
-            alt="Hero Background Image"
-            className="h-full w-full object-cover"
-          />
-
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-navy/25" />
-        </div>
-
-        {/* Hero content */}
-        <Container className="relative z-10 flex min-h-[680px] items-center justify-center px-6 py-20 sm:px-8 sm:py-24 lg:px-0 lg:py-28">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.15,
-                },
-              },
-            }}
-            className="mx-auto flex w-full max-w-[897px] flex-col items-center gap-4 pt-[6px] text-center"
-          >
-            {/* Eyebrow */}
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.5 }}
-              className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gold sm:text-xs sm:tracking-[0.2em]"
-            >
-              ABOUT DIGITAL GOVERNANCE AFRICA
-            </motion.p>
-
-            {/* Heading */}
-            <motion.h1
-              variants={{
-                hidden: { opacity: 0, y: 25 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6 }}
-              className="max-w-[850px] text-center text-[36px] leading-[40px] font-extrabold tracking-[-0.8px] text-white sm:text-[48px] sm:leading-[52px] lg:text-[60px] lg:leading-[67px] lg:tracking-tight"
-            >
-              Shaping Trusted, Ethical & Sustainable Digital Institutions
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6 }}
-              className=" mx-auto max-w-[760px] text-center text-[16px] leading-[25px] font-normal text-white/90 sm:max-w-[700px] sm:text-[18px] sm:leading-[28px] "
-            >
-              Digital Governance Africa (DGA) is a pan-African advisory and
-              institutional capability initiative. We partner with national
-              governments, regulatory authorities, state agencies, and prominent
-              enterprise boards to design responsible AI frameworks, modern data
-              governance structures, and resilient public administration systems
-              tailored to the African continent.
-            </motion.p>
-
-            {/* Buttons */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6 }}
-              className="mt-3 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-3"
-            >
-              <Button
-                to="/services"
-                variant="primary"
-                magnetic
-                className="w-full px-5 py-3 text-sm sm:w-auto"
-              >
-                Partner With Our Leadership
-                <FiArrowRight aria-hidden size={15} />
-              </Button>
-
-              <Button
-                to="/contact"
-                variant="secondary"
-                className="w-full px-5 py-3 text-sm sm:w-auto"
-              >
-                Explore Advisory Solutions
-              </Button>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="ABOUT DIGITAL GOVERNANCE AFRICA"
+        title="Shaping Trusted, Ethical & Sustainable Digital Institutions"
+        description="Digital Governance Africa (DGA) is a pan-African advisory and
+          institutional capability initiative. We partner with national
+          governments, regulatory authorities, state agencies, and prominent
+          enterprise boards to design responsible AI frameworks, modern data
+          governance structures, and resilient public administration systems
+          tailored to the African continent."
+        backgroundImage={aboutHeroImage}
+        primaryAction={{
+          label: "Partner With Our Leadership",
+          to: "/services",
+        }}
+        secondaryAction={{
+          label: "Explore Advisory Solutions",
+          to: "/contact",
+        }}
+        showDivider={false}
+      />
 
       <section className="bg-white py-20 sm:py-24">
         <Container>
