@@ -5,10 +5,8 @@ import {
   FiMail,
   FiPhone,
   FiGlobe,
-  FiCheck,
   FiDownload,
   FiClock,
-  FiArrowRight,
 } from "react-icons/fi";
 import { RiShieldCheckLine } from "react-icons/ri";
 import { motion } from "framer-motion";
