@@ -60,7 +60,7 @@ export function ServicesPage() {
                 type="button"
                 onClick={() => goTo(activeIndex - 1, -1)}
                 aria-label="Previous service"
-                className="absolute -left-[18px] top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-line bg-white text-ink shadow-sm transition-colors hover:border-gold hover:text-gold sm:-left-[22px] sm:h-11 sm:w-11"
+                className="absolute -left-4.5 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-line bg-white text-ink shadow-sm transition-colors hover:border-gold hover:text-gold sm:-left-5.5 sm:h-11 sm:w-11"
               >
                 <FiChevronLeft aria-hidden size={18} />
               </button>
