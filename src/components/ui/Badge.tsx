@@ -4,6 +4,7 @@ import { cn } from "../../lib/cn";
 const TONE_CLASSES = {
   navy: "bg-navy/10 text-navy",
   gold: "bg-gold/10 text-gold",
+  white: "bg-white/10 text-white",
 } as const;
 
 export function Badge({

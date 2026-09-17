@@ -9,6 +9,7 @@ interface SectionHeadingProps {
   align?: "left" | "center";
   className?: string;
   titleClassName?: string;
+  subtitleClassName?: string;
 }
 
 export function SectionHeading({
@@ -18,6 +19,7 @@ export function SectionHeading({
   align = "left",
   className,
   titleClassName,
+  subtitleClassName,
 }: SectionHeadingProps) {
   return (
     <Reveal
@@ -42,7 +44,12 @@ export function SectionHeading({
       </h2>
 
       {subtitle && (
-        <p className="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
+        <p
+          className={cn(
+            "mt-4 text-base leading-relaxed text-ink-muted sm:text-lg",
+            subtitleClassName,
+          )}
+        >
           {subtitle}
         </p>
       )}

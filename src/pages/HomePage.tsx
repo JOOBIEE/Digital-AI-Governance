@@ -19,7 +19,8 @@ import { staggerDelay } from "../lib/motion";
 import { ArticleCard } from "../components/cards/ArticleCard";
 import { ARTICLES } from "../data/articles";
 import { motion } from "framer-motion";
-import { HeroVisual } from "../components/home/HeroVisual";
+import HeroImage from "../assets/images/hero-image.webp";
+import { Divider } from "../components/ui/Divider";
 
 const WHAT_WE_DO = [
   {
@@ -159,9 +160,21 @@ export function HomePage() {
         title="Digital Governance Africa"
         description="We help governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
       />
-      <section className="border-b border-line bg-surface-alt">
-        <Container className="grid gap-10 py-24 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          {/* Text content */}
+      <section className="relative overflow-hidden bg-navy">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src={HeroImage}
+            alt="Hero Background Image"
+            className="h-full w-full object-cover"
+          />
+
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-navy/25" />
+        </div>
+
+        {/* Hero content */}
+        <Container className="relative z-10 flex min-h-[680px] items-center justify-center py-24 sm:py-28">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -173,6 +186,7 @@ export function HomePage() {
                 },
               },
             }}
+            className="mx-auto flex max-w-6xl flex-col items-center text-center"
           >
             <motion.p
               variants={{
@@ -191,7 +205,7 @@ export function HomePage() {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.6 }}
-              className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl"
+              className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl "
             >
               Governing Africa's Digital Future
             </motion.h1>
@@ -202,7 +216,7 @@ export function HomePage() {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.6 }}
-              className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted"
+              className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80"
             >
               We help governments, institutions and organisations strengthen
               digital governance, adopt artificial intelligence responsibly and
@@ -236,35 +250,88 @@ export function HomePage() {
               </Button>
             </motion.div>
 
+            {/* White divider */}
+            <Divider className="my-8 h-px w-24 bg-white/20" />
+
             <motion.p
               variants={{
                 hidden: { opacity: 0, y: 15 },
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.5 }}
-              className="mt-8 text-sm font-medium text-ink-muted"
+              className=" text-sm font-medium text-white/65"
             >
               Digital Governance &middot; Responsible AI &middot; Data
               Governance &middot; Institutional Transformation
             </motion.p>
           </motion.div>
-
-          {/* Hero image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.3,
-              ease: "easeOut",
-            }}
-            className=" overflow-hidden rounded-3xl"
-          >
-            <HeroVisual />
-          </motion.div>
         </Container>
       </section>
 
+      <section className="py-24">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Insights"
+              title="Ideas Shaping Africa's Digital Future"
+            />
+            <Button to="/insights" variant="ghost">
+              View All Insights <FiArrowRight aria-hidden size={16} />
+            </Button>
+          </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {ARTICLES.slice(0, 3).map((article, index) => (
+              <Reveal key={article.slug} delayMs={staggerDelay(index)}>
+                <ArticleCard article={article} />
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Technology Alone Does Not Transform Institutions */}
+      <section className="relative min-h-[600px] overflow-hidden bg-navy">
+        {/* Background Video */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        >
+          {/* Replace this with your actual video */}
+          <source src="/placeholder-video.mp4" type="video/mp4" />
+        </video>
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-navy/75" />
+
+        {/* Content */}
+        <Container className="relative z-10 flex min-h-[600px] items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="mx-auto max-w-4xl text-center"
+          >
+            <h2 className="text-[36px] font-extrabold leading-[40px] tracking-[-0.9px] text-white">
+              Technology Alone Does Not Transform Institutions
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-3xl text-center text-[18px] font-normal leading-7 tracking-normal text-white">
+              Successful digital transformation requires trusted data,
+              responsible leadership, effective governance and the institutional
+              capability to turn innovation into sustainable value. Digital
+              Governance Africa brings these elements together through advisory
+              services, executive education, research, governance methodologies
+              and practical digital solutions.
+            </p>
+          </motion.div>
+        </Container>
+      </section>
+      {/* 
       <section className="py-20">
         <Container className="max-w-3xl">
           <motion.div
@@ -285,7 +352,7 @@ export function HomePage() {
             </p>
           </motion.div>
         </Container>
-      </section>
+      </section> */}
 
       <section className="border-t border-line bg-surface-alt py-24">
         <Container>
@@ -296,16 +363,19 @@ export function HomePage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {WHAT_WE_DO.map((area, index) => (
               <Reveal key={area.title} delayMs={staggerDelay(index)}>
-                <Card className="flex h-full flex-col">
+                <Card className="!p-6 flex h-full flex-col items-start text-left">
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gold/10 text-gold">
                     <area.icon aria-hidden size={20} />
                   </span>
+
                   <h3 className="mt-4 text-lg font-semibold text-ink">
                     {area.title}
                   </h3>
+
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-muted">
                     {area.summary}
                   </p>
+
                   <Button
                     to={area.to}
                     variant="ghost"
@@ -365,22 +435,29 @@ export function HomePage() {
             title="From Strategy to Sustainable Transformation"
             subtitle="We apply the DGA Transformation Framework™ to help clients move from vision to implementation and continuous improvement."
           />
+
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {FRAMEWORK_STAGES.map((stage) => (
-              <div key={stage.step}>
+              <div
+                key={stage.step}
+                className="rounded-xl bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-lg"
+              >
                 <span className="text-sm font-semibold text-gold">
                   {stage.step}
                 </span>
+
                 <h3 className="mt-2 text-lg font-semibold text-ink">
                   {stage.title}
                 </h3>
+
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">
                   {stage.description}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-10 text-sm font-medium text-gold">
+
+          <p className="mt-10 text-center text-sm font-medium text-gold">
             Discover &rarr; Design &rarr; Build &rarr; Implement &rarr; Enable
             &rarr; Monitor &amp; Improve
           </p>
@@ -418,7 +495,7 @@ export function HomePage() {
       <section className="border-t border-line bg-navy py-24">
         <Container className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
           <div>
-            <Badge tone="gold">Status: In Development</Badge>
+            <Badge tone="white">Status: In Development</Badge>
             <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
               GOVERNOVA AI™ — Intelligent Governance for the Digital Age
             </h2>
@@ -446,28 +523,7 @@ export function HomePage() {
         </Container>
       </section>
 
-      <section className="py-24">
-        <Container>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading
-              eyebrow="Insights"
-              title="Ideas Shaping Africa's Digital Future"
-            />
-            <Button to="/insights" variant="ghost">
-              View All Insights <FiArrowRight aria-hidden size={16} />
-            </Button>
-          </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {ARTICLES.slice(0, 3).map((article, index) => (
-              <Reveal key={article.slug} delayMs={staggerDelay(index)}>
-                <ArticleCard article={article} />
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-24">
+      <section className="py-[30px]">
         <Container className="flex flex-col items-center gap-6 text-center">
           <SectionHeading
             align="center"
@@ -481,7 +537,7 @@ export function HomePage() {
         </Container>
       </section>
 
-      <section className="border-t border-line bg-surface-alt py-20">
+      <section className="border-t border-line bg-surface-alt py-[83px]">
         <Container className="flex flex-col items-center gap-6 text-center">
           <Reveal>
             <div className="flex flex-col items-center gap-6">

@@ -22,20 +22,15 @@ export function ArticleCard({
   featured?: boolean;
 }) {
   const cover = article.coverImage ?? ARTICLE_CATEGORY_COVERS[article.category];
-  const [revealed, setRevealed] = useState(false);
 
-  const imageWrapperClasses = cn(
-    "relative -m-6 mb-4 overflow-hidden",
-    featured
-      ? "aspect-[21/9] rounded-b-none sm:m-0 sm:rounded-lg"
-      : "aspect-video rounded-b-none sm:m-0 sm:rounded-lg",
-  );
+  const [revealed, setRevealed] = useState(false);
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     // Touch equivalent: first tap reveals the hover state, second tap navigates.
     const isTouch = window.matchMedia(
       "(hover: none) and (pointer: coarse)",
     ).matches;
+
     if (isTouch && !revealed) {
       event.preventDefault();
       setRevealed(true);
@@ -49,49 +44,72 @@ export function ArticleCard({
       className={cn("group block", revealed && "is-revealed")}
     >
       <Card
-        className={featured ? "grid gap-6 sm:grid-cols-2 sm:items-center" : ""}
+        className={cn(
+          "px-6 py-12",
+          featured ? "grid gap-6 sm:grid-cols-2 sm:items-center" : "",
+          !featured && "overflow-hidden",
+        )}
       >
-        <div className={imageWrapperClasses}>
+        {/* Image */}
+        <div
+          className={cn(
+            "relative -mx-6 -mt-12 mb-4 w-[calc(100%+48px)] overflow-hidden rounded-t-[25px]",
+            featured
+              ? "aspect-[21/9] sm:m-0 sm:w-full sm:rounded-t-[25px]"
+              : "aspect-video",
+          )}
+        >
           {cover ? (
             <img
               src={cover}
-              alt=""
+              alt="Article cover image"
               className={cn(
                 "h-full w-full object-cover transition-transform duration-400 ease-standard",
-                "group-hover:scale-[1.06] group-[.is-revealed]:scale-[1.06]",
+                "group-hover:scale-[1.06]",
+                revealed && "scale-[1.06]",
               )}
             />
           ) : (
             <PlaceholderImage
               label={article.category}
               aspect={featured ? "wide" : "video"}
-              className="h-full rounded-none"
+              className="h-full w-full rounded-none"
             />
           )}
+
           <div
             className={cn(
               "absolute inset-0 bg-navy/0 transition-colors duration-250 ease-standard",
-              "group-hover:bg-navy/20 group-[.is-revealed]:bg-navy/20",
+              "group-hover:bg-navy/20",
+              revealed && "bg-navy/20",
             )}
           />
+
           <span
             className={cn(
               "absolute bottom-4 left-4 flex translate-y-2 items-center gap-1.5 text-sm font-semibold text-headline-dark opacity-0 transition-[opacity,transform] duration-250 ease-standard",
-              "group-hover:translate-y-0 group-hover:opacity-100 group-[.is-revealed]:translate-y-0 group-[.is-revealed]:opacity-100",
+              "group-hover:translate-y-0 group-hover:opacity-100",
+              revealed && "translate-y-0 opacity-100",
             )}
           >
-            Read Article <FiArrowRight aria-hidden size={14} />
+            Read Article
+            <FiArrowRight aria-hidden size={14} />
           </span>
         </div>
-        <div className={featured ? "" : "mt-4"}>
+
+        {/* Content */}
+        <div>
           <div className="flex items-center gap-2">
             <Badge>{article.category}</Badge>
+
             {article.gated && (
               <span className="inline-flex items-center gap-1 text-xs font-medium text-ink-muted">
-                <FiLock aria-hidden size={11} /> Registration required
+                <FiLock aria-hidden size={11} />
+                Registration required
               </span>
             )}
           </div>
+
           <h3
             className={
               featured
@@ -101,14 +119,18 @@ export function ArticleCard({
           >
             {article.title}
           </h3>
+
           <p className="mt-2 text-sm leading-relaxed text-ink-muted">
             {article.summary}
           </p>
+
           <div className="mt-3 flex items-center gap-2 text-xs text-ink-muted">
             <time dateTime={article.date}>
               {DATE_FORMATTER.format(new Date(article.date))}
             </time>
+
             <span aria-hidden>&middot;</span>
+
             <span>{article.readingTime}</span>
           </div>
         </div>

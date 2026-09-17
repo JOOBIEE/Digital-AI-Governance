@@ -30,7 +30,7 @@ export function Card({
       whileHover={hoverEffect ? { y: -8 } : undefined}
       transition={{ duration: 0.15, ease: "easeOut" }}
       className={cn(
-        "rounded-card p-12 overflow-hidden",
+        "rounded-card p-6 overflow-hidden",
         VARIANT_BASE_CLASSES[variant],
         hoverEffect && VARIANT_HOVER_CLASSES[variant],
         className,

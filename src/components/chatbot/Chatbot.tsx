@@ -16,7 +16,7 @@ export function Chatbot() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  function handleSend() {
+  async function handleSend() {
     if (!input.trim() || isLoading) return;
 
     const userMessage: Message = {
@@ -25,26 +25,44 @@ export function Chatbot() {
       content: input.trim(),
     };
 
-    setMessages((previousMessages) => [...previousMessages, userMessage]);
-
+    const nextMessages = [...messages, userMessage];
+    setMessages(nextMessages);
     setInput("");
     setIsLoading(true);
 
-    setTimeout(() => {
-      const assistantMessage: Message = {
-        id: crypto.randomUUID(),
-        role: "assistant",
-        content:
-          "Thank you for your question. GOVERNOVA AI™ will help you explore digital governance, responsible AI, data governance and institutional transformation.",
-      };
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          messages: nextMessages.map(({ role, content }) => ({
+            role,
+            content,
+          })),
+        }),
+      });
+
+      if (!response.ok) throw new Error("Chat request failed");
+
+      const data: { content: string } = await response.json();
 
       setMessages((previousMessages) => [
         ...previousMessages,
-        assistantMessage,
+        { id: crypto.randomUUID(), role: "assistant", content: data.content },
       ]);
-
+    } catch {
+      setMessages((previousMessages) => [
+        ...previousMessages,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content:
+            "Sorry, I couldn't reach GOVERNOVA AI right now. Please try again in a moment or use the Contact page below.",
+        },
+      ]);
+    } finally {
       setIsLoading(false);
-    }, 1200);
+    }
   }
 
   return (
