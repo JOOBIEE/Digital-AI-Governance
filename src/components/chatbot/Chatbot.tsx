@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { FiMessageCircle, FiUser, FiX } from "react-icons/fi";
 import { FaTelegramPlane } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import chatbotAvatar from "../../assets/images/chatbot-dga.png";
 
 type Message = {
   id: string;
@@ -79,9 +79,11 @@ export function Chatbot() {
           >
             {/* Header */}
             <div className="flex items-center gap-3 bg-gradient-to-r from-navy to-navy-slate px-5 py-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-navy bg-white/75 text-navy">
-                <FiUser size={20} aria-hidden />
-              </div>
+              <img
+                src={chatbotAvatar}
+                alt="chatbot icon"
+                className="h-10 w-10 object-contain"
+              />
 
               <div>
                 <h2 className="text-base font-semibold text-white">
@@ -215,81 +217,17 @@ export function Chatbot() {
 
       {/* Floating Chatbot Button */}
       <div className="fixed bottom-6 right-6 z-50">
-        {/* Active Indicator */}
-        <span
-          className="absolute -right-0.5 -top-0.5 z-20 h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500"
-          aria-label="Active"
-        />
-
         {/* Main Button */}
         <motion.button
           type="button"
           onClick={() => setIsOpen((previous) => !previous)}
           aria-label={isOpen ? "Close GOVERNOVA AI" : "Open GOVERNOVA AI"}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
-          className="relative flex h-14 w-14 cursor-pointer items-center justify-center rounded-full border-2 border-white bg-white text-navy shadow-lg ring-2 ring-navy transition-colors duration-200 hover:bg-navy hover:text-white"
+          className="relative block h-24 w-24 cursor-pointer rounded-full"
         >
-          <AnimatePresence mode="wait" initial={false}>
-            {isOpen ? (
-              <motion.span
-                key="close"
-                initial={{
-                  opacity: 0,
-                  rotate: -90,
-                  scale: 0.7,
-                }}
-                animate={{
-                  opacity: 1,
-                  rotate: 0,
-                  scale: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  rotate: 90,
-                  scale: 0.7,
-                }}
-                transition={{ duration: 0.18 }}
-              >
-                <FiX size={23} aria-hidden />
-              </motion.span>
-            ) : (
-              <motion.span
-                key="user"
-                initial={{
-                  opacity: 0,
-                  rotate: 90,
-                  scale: 0.7,
-                }}
-                animate={{
-                  opacity: 1,
-                  rotate: 0,
-                  scale: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  rotate: -90,
-                  scale: 0.7,
-                }}
-                transition={{ duration: 0.18 }}
-              >
-                <FiUser size={23} aria-hidden />
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <img src={chatbotAvatar} alt="" className="h-full w-full" />
         </motion.button>
-
-        {/* Message Icon - Closed State Only */}
-        {!isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.7 }}
-            className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-white text-navy shadow-sm ring-1 ring-navy"
-          >
-            <FiMessageCircle size={13} aria-hidden />
-          </motion.div>
-        )}
       </div>
     </>
   );

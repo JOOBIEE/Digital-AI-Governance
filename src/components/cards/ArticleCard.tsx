@@ -17,11 +17,16 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
 export function ArticleCard({
   article,
   featured = false,
+  coverImage,
 }: {
   article: Article;
   featured?: boolean;
+  coverImage?: string;
 }) {
-  const cover = article.coverImage ?? ARTICLE_CATEGORY_COVERS[article.category];
+  const cover =
+    coverImage ??
+    article.coverImage ??
+    ARTICLE_CATEGORY_COVERS[article.category];
 
   const [revealed, setRevealed] = useState(false);
 
@@ -55,7 +60,7 @@ export function ArticleCard({
           className={cn(
             "relative -mx-6 -mt-12 mb-4 w-[calc(100%+48px)] overflow-hidden rounded-t-[25px]",
             featured
-              ? "aspect-[21/9] sm:m-0 sm:w-full sm:rounded-t-[25px]"
+              ? "aspect-[21/9] sm:m-0 sm:w-full sm:rounded-[25px]"
               : "aspect-video",
           )}
         >
