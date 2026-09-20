@@ -21,6 +21,32 @@ import { ARTICLES } from "../data/articles";
 import { motion } from "framer-motion";
 import HeroImage from "../assets/images/hero-image.webp";
 import PageHero from "../components/home/PageHero";
+import { BackgroundVideo } from "../components/ui/BackgroundVideo";
+import type { BackgroundVideoSource } from "../components/ui/BackgroundVideo";
+import bgAv1 from "../assets/vids/bg-av1.mp4";
+import bgH264 from "../assets/vids/bg-h264.mp4";
+import bgPoster from "../assets/vids/bg-poster.webp";
+
+// Preference order: AV1 (smallest, hardware-decoded devices only), then H.264 (plays everywhere).
+const INSTITUTIONS_VIDEO_SOURCES: BackgroundVideoSource[] = [
+  {
+    src: bgAv1,
+    type: 'video/mp4; codecs="av01.0.05M.08"',
+    width: 1280,
+    height: 720,
+    bitrate: 270_000,
+    framerate: 30,
+    requireEfficient: true,
+  },
+  {
+    src: bgH264,
+    type: 'video/mp4; codecs="avc1.64001f"',
+    width: 960,
+    height: 540,
+    bitrate: 300_000,
+    framerate: 30,
+  },
+];
 
 const WHAT_WE_DO = [
   {
@@ -200,25 +226,17 @@ export function HomePage() {
       </section>
 
       {/* Technology Alone Does Not Transform Institutions */}
-      <section className="relative min-h-[600px] overflow-hidden bg-navy">
-        {/* Background Video */}
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-        >
-          {/* Replace this with your actual video */}
-          <source src="/placeholder-video.mp4" type="video/mp4" />
-        </video>
+      <section className="relative min-h-[680px] lg:min-h-[800px] overflow-hidden bg-navy">
+        <BackgroundVideo
+          sources={INSTITUTIONS_VIDEO_SOURCES}
+          poster={bgPoster}
+        />
 
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-navy/75" />
 
         {/* Content */}
-        <Container className="relative z-10 flex min-h-[600px] items-center justify-center">
+        <Container className="relative z-10 flex min-h-[680px] lg:min-h-[800px] py-24 items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -227,7 +245,8 @@ export function HomePage() {
             className="mx-auto max-w-4xl text-center"
           >
             <h2 className="text-[36px] font-extrabold leading-[40px] tracking-[-0.9px] text-white">
-              Technology Alone Does Not Transform Institutions
+              Technology Alone Does Not <br className="hidden sm:block" />{" "}
+              Transform Institutions
             </h2>
 
             <p className="mx-auto mt-6 max-w-3xl text-center text-[18px] font-normal leading-7 tracking-normal text-white">
