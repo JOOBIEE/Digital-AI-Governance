@@ -51,21 +51,41 @@ export default async function handler(req: Request): Promise<Response> {
     parts: [{ text: message.content }],
   }));
 
-  const geminiResponse = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`,
-    {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents,
-        generationConfig: { temperature: 0.7, maxOutputTokens: 512 },
-      }),
-    },
-  );
+  const requestBody = JSON.stringify({
+    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    contents,
+    generationConfig: { temperature: 0.7, maxOutputTokens: 2048 },
+  });
 
-  if (!geminiResponse.ok) {
-    const errorText = await geminiResponse.text();
+  const attempts = [
+    { model: "gemini-flash-latest", delayMs: 0 },
+    { model: "gemini-flash-latest", delayMs: 800 },
+    { model: "gemini-flash-lite-latest", delayMs: 0 },
+  ];
+
+  let geminiResponse: Response | undefined;
+  for (const attempt of attempts) {
+    if (attempt.delayMs) {
+      await new Promise((resolve) => setTimeout(resolve, attempt.delayMs));
+    }
+
+    geminiResponse = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${attempt.model}:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: requestBody,
+      },
+    );
+
+    const retryable = geminiResponse.status === 503 || geminiResponse.status === 429;
+    if (!retryable) break;
+    console.error("Gemini busy", attempt.model, geminiResponse.status);
+  }
+
+  if (!geminiResponse || !geminiResponse.ok) {
+    const errorText = geminiResponse ? await geminiResponse.text() : "";
+    console.error("Gemini error", geminiResponse?.status, errorText);
     return new Response(
       JSON.stringify({ error: "Gemini request failed", details: errorText }),
       { status: 502, headers: { "content-type": "application/json" } },
@@ -73,10 +93,11 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   const data = await geminiResponse.json();
-  const text: string | undefined =
-    data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  const parts: { text?: string }[] = data?.candidates?.[0]?.content?.parts ?? [];
+  const text = parts.map((part) => part.text ?? "").join("").trim();
 
   if (!text) {
+    console.error("Gemini empty response", JSON.stringify(data));
     return new Response(
       JSON.stringify({ error: "No response from Gemini" }),
       { status: 502, headers: { "content-type": "application/json" } },
