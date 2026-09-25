@@ -53,7 +53,7 @@ const WHAT_WE_DO = [
     icon: FiCpu,
     title: "AI Governance Advisory",
     summary:
-      "We help organisations design responsible AI strategies, governance frameworks, risk assessments, policies and assurance arrangements.",
+      "We support organisations in adopting and overseeing AI responsibly. Our advisory services cover AI strategy, governance frameworks, risk assessment, policy and assurance.",
     to: "/services",
     linkLabel: "Explore AI Governance",
   },
@@ -61,7 +61,7 @@ const WHAT_WE_DO = [
     icon: FiTrendingUp,
     title: "Digital Transformation Advisory",
     summary:
-      "We support organisations in developing practical, governance-led strategies that align people, processes, data and technology.",
+      "We support organisations in planning and governing digital transformation. Our advisory services help align people, processes, data and technology with institutional priorities.",
     to: "/services",
     linkLabel: "Explore Digital Transformation",
   },
@@ -69,7 +69,7 @@ const WHAT_WE_DO = [
     icon: FiDatabase,
     title: "Data Governance",
     summary:
-      "We help organisations establish accountability, improve data quality and govern data as a trusted strategic asset.",
+      "We support organisations in strengthening accountability for their data. Our advisory services address data ownership, stewardship, quality and responsible use.",
     to: "/services",
     linkLabel: "Explore Data Governance",
   },
@@ -77,7 +77,7 @@ const WHAT_WE_DO = [
     icon: FiAward,
     title: "Executive Education",
     summary:
-      "We design executive programmes, professional development courses, workshops and in-house training for leaders and professionals.",
+      "We design executive programmes, professional development courses, workshops and tailored in-house training. Our programmes equip leaders and professionals with practical governance knowledge and capabilities.",
     to: "/programmes",
     linkLabel: "Explore Our Programmes",
   },
@@ -85,7 +85,7 @@ const WHAT_WE_DO = [
     icon: FiFileText,
     title: "Research and Policy Advisory",
     summary:
-      "We provide applied research, regulatory analysis, policy support and strategic insights that strengthen evidence-based decision-making.",
+      "We analyse relevant research, regulatory developments and policy issues. Our advisory insights support informed, evidence-based decision-making.",
     to: "/services",
     linkLabel: "Explore Research and Insights",
   },
@@ -100,14 +100,14 @@ const WHAT_WE_DO = [
 ];
 
 const STRENGTHS = [
-  "Digital governance and responsible AI",
+  "Integrated digital, data and AI governance",
   "Practical, governance-led transformation",
-  "Pan-African perspective",
+  "African context and international good practice",
   "Multidisciplinary expertise",
-  "Executive leadership development",
-  "Collaboration with trusted specialists and partners",
+  "Executive leadership and institutional capability development",
   "Tailored frameworks and implementation support",
-  "Focus on measurable institutional outcomes",
+  "Collaboration with specialist partners",
+  "Outcome-focused approach",
 ];
 
 const FRAMEWORK_STAGES = [
@@ -115,36 +115,37 @@ const FRAMEWORK_STAGES = [
     step: "01",
     title: "Discover",
     description:
-      "Understand the organisation, its maturity, priorities, risks and opportunities.",
+      "Assess the organisation's current maturity, priorities, risks and opportunities.",
   },
   {
     step: "02",
     title: "Design",
     description:
-      "Create the future-state strategy, governance framework and implementation roadmap.",
+      "Define the future-state strategy, governance arrangements and delivery roadmap.",
   },
   {
     step: "03",
     title: "Build",
     description:
-      "Develop practical policies, tools, operating models and governance resources.",
+      "Develop proportionate policies, tools, operating models and governance resources.",
   },
   {
     step: "04",
     title: "Implement",
-    description: "Support adoption, organisational change and implementation.",
+    description:
+      "Embed the agreed arrangements through coordinated delivery and organisational change.",
   },
   {
     step: "05",
     title: "Enable",
     description:
-      "Build leadership capability, workforce knowledge and institutional confidence.",
+      "Strengthen leadership capability, workforce knowledge and institutional confidence.",
   },
   {
     step: "06",
     title: "Monitor & Improve",
     description:
-      "Measure progress, strengthen assurance and support continuous improvement.",
+      "Evaluate progress, reinforce assurance and refine arrangements as needs evolve.",
   },
 ];
 
@@ -184,13 +185,13 @@ export function HomePage() {
     <>
       <PageMeta
         title="Digital Governance Africa"
-        description="We help governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
+        description="We support governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
       />
 
       <PageHero
         eyebrow="Digital Governance Africa"
         title="Governing Africa's Digital Future"
-        description="We help governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
+        description="We support governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
         backgroundImage={HeroImage}
         primaryAction={{
           label: "Explore Our Services",
@@ -201,7 +202,7 @@ export function HomePage() {
           to: "/contact",
         }}
         showDivider
-        metaText="Digital Governance · Responsible AI · Data Governance · Institutional Transformation"
+        metaText="Digital Governance · Responsible AI · Data Leadership · Institutional Transformation"
       />
 
       <section className="py-24">
@@ -315,9 +316,9 @@ export function HomePage() {
             </h2>
 
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/75">
-              We combine governance, law, policy, technology and leadership
-              expertise to help organisations address digital opportunities and
-              emerging risks with confidence.
+              We bring together expertise in governance, law, policy,
+              technology and leadership to advise organisations on digital
+              opportunities, transformation priorities and emerging risks.
             </p>
           </motion.div>
 
@@ -339,8 +340,8 @@ export function HomePage() {
         <Container>
           <SectionHeading
             eyebrow="Our Delivery Framework"
-            title="From Strategy to Sustainable Transformation"
-            subtitle="We apply the DGA Transformation Framework™ to help clients move from vision to implementation and continuous improvement."
+            title="From Strategy to Lasting Institutional Change"
+            subtitle="The DGA Transformation Framework™ provides a structured pathway from strategic vision to implementation, capability development and continuous improvement."
           />
 
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
