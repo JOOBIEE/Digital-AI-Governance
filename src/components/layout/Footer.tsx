@@ -23,22 +23,22 @@ export function Footer() {
               {SITE_CONFIG.tagline}
             </p>
             <div className="mt-6 flex items-center gap-4">
-              <a
-                href={SITE_CONFIG.social.linkedin}
+              
+             <a   href={SITE_CONFIG.social.linkedin}
                 aria-label="DGA on LinkedIn"
                 className="text-white/70 hover:text-white"
               >
                 <FaLinkedin aria-hidden size={18} />
               </a>
-              <a
-                href={SITE_CONFIG.social.tiktok}
+              
+              <a  href={SITE_CONFIG.social.tiktok}
                 aria-label="DGA on TikTok"
                 className="text-white/70 hover:text-white"
               >
                 <FaTiktok aria-hidden size={18} />
               </a>
-              <a
-                href={SITE_CONFIG.social.instagram}
+              
+              <a  href={SITE_CONFIG.social.instagram}
                 aria-label="DGA on Instagram"
                 className="text-white/70 hover:text-white"
               >
@@ -95,10 +95,12 @@ export function Footer() {
                   {SITE_CONFIG.email}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5">
-                <FiPhone aria-hidden className="mt-0.5 shrink-0" size={15} />
-                <span>{SITE_CONFIG.phone}</span>
-              </li>
+              {SITE_CONFIG.phones.map((phone) => (
+                <li key={phone} className="flex items-start gap-2.5">
+                  <FiPhone aria-hidden className="mt-0.5 shrink-0" size={15} />
+                  <span>{phone}</span>
+                </li>
+              ))}
               <li className="flex items-start gap-2.5">
                 <FiMapPin aria-hidden className="mt-0.5 shrink-0" size={15} />
                 <span>{SITE_CONFIG.address}</span>

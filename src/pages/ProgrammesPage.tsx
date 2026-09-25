@@ -11,9 +11,7 @@ import program2 from "../assets/images/programmes_2.webp";
 import { motion } from "framer-motion";
 import { ImageWithOverlay } from "../components/ui/ImageOverlay";
 
-const CATEGORY_HEADER_IMAGES: Partial<
-  Record<(typeof PROGRAMME_CATEGORIES)[number], string>
-> = {
+const CATEGORY_HEADER_IMAGES: Partial<Record<(typeof PROGRAMME_CATEGORIES)[number], string>> = {
   "Government and Public Sector": program1,
   "Corporate Governance": program2,
 };
@@ -23,15 +21,15 @@ export function ProgrammesPage() {
     <>
       <PageMeta
         title="Programmes"
-        description="Executive programmes for future-ready leaders across government, corporate governance, and legal and compliance."
+        description="Executive programmes for digital governance and institutional transformation across government, corporate governance, and legal and compliance."
       />
 
       <section className="border-b border-line bg-surface-alt py-20">
         <Container>
           <SectionHeading
             eyebrow="Programmes"
-            title="Executive Programmes for Future-Ready Leaders"
-            subtitle="Our programmes help leaders understand emerging technologies, strengthen governance and translate learning into practical institutional action."
+            title="Executive Programmes for Digital Governance and Institutional Transformation"
+            subtitle="Our programmes equip leaders with the knowledge and practical tools to navigate digital change, strengthen governance and support responsible innovation. Each programme is designed to translate executive learning into relevant institutional action."
           />
         </Container>
       </section>
@@ -102,9 +100,9 @@ export function ProgrammesPage() {
       <section className="border-t border-line py-20">
         <Container className="max-w-3xl">
           <SectionHeading
-            eyebrow="Custom Organisational Programmes"
-            title="Tailored to your institution"
-            subtitle="Programmes can be tailored to institutional mandates, leadership levels, sector priorities and transformation objectives."
+            eyebrow="Tailored Organisational Programmes"
+            title="Designed Around Your Institution"
+            subtitle="Programmes can be adapted to reflect your institution's mandate, sector, leadership audience, strategic priorities and transformation objectives."
           />
         </Container>
       </section>

@@ -38,8 +38,8 @@ export function ServicesPage() {
         <Container className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <SectionHeading
             eyebrow="Services"
-            title="Governance-Led Solutions for a Changing Digital World"
-            subtitle="We help organisations strengthen governance, build institutional capability and adopt digital technologies responsibly."
+            title="Practical Governance for Digital Transformation"
+            subtitle="We provide advisory, capability-development and executive-learning solutions for organisations navigating digital, data and AI-related change."
           />
 
           <ImageWithOverlay

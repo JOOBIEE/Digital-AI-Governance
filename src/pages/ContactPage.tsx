@@ -12,7 +12,7 @@ export function ContactPage() {
     <>
       <PageMeta
         title="Contact"
-        description="Whether you are exploring responsible AI, strengthening data governance, developing executive capability or planning institutional transformation, we would be pleased to hear from you."
+        description="Speak with us about responsible AI, data governance, executive capability development or institutional transformation."
       />
 
       <section className="border-b border-line bg-surface-alt py-20">
@@ -20,7 +20,7 @@ export function ContactPage() {
           <SectionHeading
             eyebrow="Contact"
             title="Start a Conversation"
-            subtitle="Whether you are exploring responsible AI, strengthening data governance, developing executive capability or planning institutional transformation, we would be pleased to hear from you."
+            subtitle="Speak with us about responsible AI, data governance, executive capability development or institutional transformation. We welcome the opportunity to understand your priorities and explore how DGA may support them."
           />
         </Container>
       </section>
@@ -36,10 +36,12 @@ export function ContactPage() {
                 {SITE_CONFIG.email}
               </a>
             </li>
-            <li className="flex items-start gap-3">
-              <FiPhone aria-hidden className="mt-0.5 shrink-0 text-gold" size={16} />
-              <span>{SITE_CONFIG.phone}</span>
-            </li>
+            {SITE_CONFIG.phones.map((phone) => (
+              <li key={phone} className="flex items-start gap-3">
+                <FiPhone aria-hidden className="mt-0.5 shrink-0 text-gold" size={16} />
+                <span>{phone}</span>
+              </li>
+            ))}
             <li className="flex items-start gap-3">
               <FiMapPin aria-hidden className="mt-0.5 shrink-0 text-gold" size={16} />
               <span>{SITE_CONFIG.address}</span>

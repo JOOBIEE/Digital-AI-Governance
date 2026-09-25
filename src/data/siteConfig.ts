@@ -1,10 +1,10 @@
 export const SITE_CONFIG = {
   name: "Digital Governance Africa",
   shortName: "DGA",
-    tagline:
+  tagline:
     "Governing Digital Change. Strengthening Institutions. Advancing Africa.™",
   email: "info@thedigitalgovernance.com",
-  phone: "+234 (0) 000 000 0000",
+  phones: ["081 2200 7930", "080 2223 4966", "+353 86 847 7121"],
   address: "Nigeria — Serving Africa",
   social: {
     linkedin: "https://linkedin.com/company/digital-governance-africa",

@@ -437,7 +437,7 @@ export function HomePage() {
             align="center"
             eyebrow="Partnership"
             title="Building Africa's Digital Future Together"
-            subtitle="We work with governments, regulators, universities, development organisations, businesses, professional bodies and trusted technology partners. Whether you are strengthening governance, developing institutional capability or preparing for responsible AI adoption, we welcome the opportunity to explore how we can work together."
+                        subtitle="We collaborate with governments, regulators, universities, development organisations, businesses, professional bodies and specialist technology providers. If your organisation is strengthening governance, developing institutional capability or preparing for responsible AI adoption, we welcome discussions on potential partnerships with clearly defined objectives, responsibilities and institutional value."
           />
           <Button to="/contact" variant="primary">
             Start a Conversation <FiArrowRight aria-hidden size={16} />
@@ -449,13 +449,14 @@ export function HomePage() {
         <Container className="flex flex-col items-center gap-6 text-center">
           <Reveal>
             <div className="flex flex-col items-center gap-6">
-              <h2 className="max-w-2xl text-3xl font-bold text-ink sm:text-4xl">
-                Ready to Govern, Innovate and Transform?
+                            <h2 className="max-w-2xl text-3xl font-bold text-ink sm:text-4xl">
+                Ready to Strengthen Your Institution's Digital Governance?
               </h2>
 
               <p className="max-w-xl text-base text-ink-muted">
-                Partner with Digital Governance Africa to build a trusted,
-                resilient and future-ready institution.
+                Speak with Digital Governance Africa about your governance
+                priorities, institutional capabilities and responsible AI
+                ambitions.
               </p>
 
               <Button to="/contact" variant="primary">

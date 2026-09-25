@@ -13,14 +13,14 @@ export const PROGRAMS: Program[] = [
     title: "Digital Government Governance",
     category: "Government and Public Sector",
     summary:
-      "For public-sector leaders shaping the governance of digital government services.",
+      "For public-sector leaders responsible for governing digital transformation, digital public services and the responsible use of emerging technologies.",
   },
   {
     slug: "data-governance-stewardship",
     title: "Data Governance and Stewardship",
     category: "Government and Public Sector",
     summary:
-      "For officials responsible for establishing accountable, trustworthy data practice.",
+      "For public-sector leaders and officials responsible for establishing accountable, trustworthy and effective data-governance and stewardship practices.",
   },
   {
     slug: "ai-public-sector-leaders",
@@ -41,7 +41,7 @@ export const PROGRAMS: Program[] = [
     title: "National Digital Infrastructure Governance",
     category: "Government and Public Sector",
     summary:
-      "For institutions overseeing the governance of national digital infrastructure.",
+      "For public institutions and leaders responsible for governing secure, resilient and inclusive national digital infrastructure.",
   },
 
   // Corporate Governance
@@ -50,28 +50,28 @@ export const PROGRAMS: Program[] = [
     title: "Enterprise Governance 2030™",
     category: "Corporate Governance",
     summary:
-      "For Legal, Compliance, Risk and Internal Audit leaders preparing institutions for the future.",
+      "For Legal, Compliance, Risk and Internal Audit leaders preparing their organisations to govern digital transformation, data and AI responsibly.",
   },
   {
     slug: "ai-governance-boards-executives",
     title: "AI Governance for Boards and Executives",
     category: "Corporate Governance",
     summary:
-      "For boards and executives building fluency in AI governance and oversight.",
+      "For board members and senior executives strengthening their understanding, oversight and accountability for the responsible use of AI.",
   },
   {
     slug: "data-governance-leadership",
     title: "Data Governance Leadership",
     category: "Corporate Governance",
     summary:
-      "For leaders establishing enterprise-wide data governance capability.",
+      "For leaders building accountable, enterprise-wide data governance and stewardship capabilities.",
   },
   {
     slug: "digital-governance-assurance",
     title: "Digital Governance and Governance Assurance",
     category: "Corporate Governance",
     summary:
-      "For leaders strengthening digital governance oversight and assurance practice.",
+      "For leaders strengthening oversight, accountability and assurance across digital transformation, data and emerging technologies.",
   },
 
   // Legal and Compliance
@@ -80,27 +80,27 @@ export const PROGRAMS: Program[] = [
     title: "The Future Corporate Legal Function",
     category: "Legal and Compliance",
     summary:
-      "For General Counsel, in-house lawyers and governance professionals.",
+      "For general counsel, in-house legal teams and governance professionals preparing the legal function for technological, regulatory and organisational change.",
   },
   {
     slug: "ai-governance-in-house-lawyers",
     title: "AI Governance for In-House Lawyers",
     category: "Legal and Compliance",
     summary:
-      "For legal teams advising on the governance and regulation of AI adoption.",
+      "For in-house legal teams advising on the legal, regulatory and governance implications of AI adoption and use.",
   },
   {
     slug: "digital-regulatory-intelligence",
     title: "Digital Regulatory Intelligence",
     category: "Legal and Compliance",
     summary:
-      "For professionals tracking and interpreting digital regulatory developments.",
+      "For legal, compliance, risk and policy professionals monitoring digital regulatory developments and assessing their institutional implications.",
   },
   {
     slug: "legal-operations-responsible-ai",
     title: "Legal Operations and Responsible AI",
     category: "Legal and Compliance",
     summary:
-      "For legal operations leaders integrating responsible AI into legal practice.",
+      "For legal operations leaders overseeing the responsible adoption and use of AI across legal workflows and services.",
   },
 ];

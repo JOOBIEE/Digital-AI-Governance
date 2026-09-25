@@ -19,14 +19,14 @@ import { NewsletterForm } from "../components/forms/NewsletterForm";
 import constellationMap from "../assets/images/DGA_MAP.webp";
 
 const CAPABILITY_AREAS = [
-  { icon: FiShield, label: "Governance and policy support" },
-  { icon: FiDatabase, label: "AI governance tools" },
-  { icon: FiBookOpen, label: "Organisational knowledge" },
-  { icon: FiAward, label: "Executive learning" },
+  { icon: FiShield, label: "Governance and policy management" },
+  { icon: FiDatabase, label: "AI governance and risk assessment" },
+  { icon: FiBookOpen, label: "Institutional knowledge management" },
+  { icon: FiAward, label: "Executive learning and capability development" },
   { icon: FiTrendingUp, label: "Decision support" },
   { icon: FiBarChart2, label: "Reporting and analytics" },
-  { icon: FiGitBranch, label: "Workflow enablement" },
-  { icon: FiUsers, label: "Collaboration" },
+  { icon: FiGitBranch, label: "Governance workflow coordination" },
+  { icon: FiUsers, label: "Organisational collaboration" },
 ];
 
 export function GovernovaPage() {
@@ -47,9 +47,9 @@ export function GovernovaPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
             GOVERNOVA AI™ is Digital Governance Africa's flagship digital
-            innovation initiative. We are developing a platform that will help
-            organisations strengthen governance, support institutional learning
-            and make more informed decisions through responsible use of
+            innovation initiative. The platform is being developed to
+            strengthen governance, facilitate institutional learning and
+            support informed decision-making through the responsible use of
             artificial intelligence.
           </p>
         </Container>
@@ -59,15 +59,15 @@ export function GovernovaPage() {
         <Container className="max-w-3xl">
           <SectionHeading
             eyebrow="Why We Are Building It"
-            title="Bridging a fragmented governance landscape"
+            title="Addressing a Fragmented Governance Landscape"
             titleClassName="text-white"
           />
           <p className="mt-6 text-base leading-relaxed text-white/75 ">
-            Governance information is often fragmented across policies,
-            documents, systems and departments. Leaders need more effective ways
-            to access knowledge, monitor obligations and turn information into
-            practical insight. GOVERNOVA AI™ is being designed to help bridge
-            this gap.
+            In many organisations, governance information is dispersed across
+            policies, documents, systems and departments. GOVERNOVA AI™ is
+            being designed to improve access to institutional knowledge,
+            support obligation monitoring and provide practical insight for
+            decision-makers.
           </p>
         </Container>
       </section>
@@ -76,7 +76,7 @@ export function GovernovaPage() {
         <Container>
           <SectionHeading
             eyebrow="Planned Capability Areas"
-            title="What GOVERNOVA AI™ will support"
+            title="What GOVERNOVA AI™ Is Being Designed to Support"
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {CAPABILITY_AREAS.map((area) => (
@@ -125,7 +125,7 @@ export function GovernovaPage() {
           src={constellationMap}
           alt="A glowing map of Africa"
           aria-hidden
-          className="pointer-events-none mx-auto mt-16 w-full max-w-3xl rounded-3xl [mask-image:linear-gradient(to_bottom,black,transparent)]"
+          className="pointer-events-none mx-auto mt-16 w-full max-w-xl rounded-3xl [mask-image:linear-gradient(to_bottom,black,transparent)]"
         />
       </section>
     </>
