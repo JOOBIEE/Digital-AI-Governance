@@ -12,7 +12,7 @@ export const FOUNDATION_CARDS = [
     iconColor: "text-gold",
     title: "Our Mission",
     description:
-      "To equip African institutions with contextualized frameworks, ethical technology standards, and institutional competence to lead sovereign, trusted, and inclusive digital transformations.",
+      "To strengthen the governance and institutional capabilities required for responsible digital transformation, greater digital sovereignty and resilient institutions across Africa.",
     statement: "Sovereign & Resilient Future",
     statementColor: "text-gold",
   },
@@ -22,18 +22,18 @@ export const FOUNDATION_CARDS = [
     iconColor: "text-[#2563EB]",
     title: "Our Vision",
     description:
-      "An Africa where digital transformation is anchored in accountability, where AI serves socioeconomic equity, and where data sovereign assets foster sustainable economic prosperity.",
-    statement: "Responsible AI & Data Equity",
+      "A future in which African institutions govern digital transformation accountably, use artificial intelligence responsibly and steward data to support inclusive and sustainable development.",
+    statement: "Responsible Technology and Inclusive Progress",
     statementColor: "text-[#2563EB]",
   },
   {
     icon: FiTrendingUp,
     iconBg: "bg-[#059669]/10",
     iconColor: "text-[#059669]",
-    title: "African Realism",
+    title: "Grounded in African Contexts",
     description:
-      "We reject superficial boilerplate policies imported from abroad. We develop frameworks built from the lived realities, legal nuances, and operational infrastructure of African organizations.",
-    statement: "Context-Driven Methodologies",
+      "We develop practical frameworks that reflect applicable laws, institutional realities and operating environments across African jurisdictions. International good practice is adapted thoughtfully rather than applied without regard to local context.",
+    statement: "Adapted to Local Context",
     statementColor: "text-[#059669]",
   },
 ];
@@ -54,59 +54,89 @@ export const LEADERSHIP = [
   },
 ];
 
+export const DGA_DIFFERENCE = [
+  {
+    tag: "AFRICA-FOCUSED",
+    heading: "Contextual Relevance",
+    description:
+      "Designed with regard to diverse African legal, regulatory, institutional and socioeconomic contexts.",
+    className: "pb-8",
+  },
+  {
+    tag: "PRACTICAL",
+    heading: "Adapted Good Practice",
+    description:
+      "International principles and recognised good practice are adapted to applicable local requirements and institutional realities.",
+    className: "border-l border-white/10 pb-8 pl-8",
+  },
+  {
+    tag: "6-STAGE",
+    heading: "DGA Transformation Framework™",
+    description: "Discover, Design, Build, Implement, Enable, and Monitor & Improve.",
+    className: "border-t border-white/10 pt-8",
+  },
+  {
+    tag: "IN DEVELOPMENT",
+    heading: "GOVERNOVA AI™",
+    description:
+      "A planned digital governance platform intended to support institutional knowledge, learning, governance workflows and informed decision-making.",
+    className: "border-l border-t border-white/10 pt-8 pl-8",
+  },
+];
+
 export const APPROACH_STEPS = [
   {
     number: "01",
-    title: "Accountability First",
+    title: "Accountability and Oversight",
     description:
-      "Clear oversight structures and human-in-the-loop controls for every digital and automated system.",
+      "Promoting clear responsibilities, effective decision-making arrangements and human oversight proportionate to risk.",
   },
   {
     number: "02",
-    title: "Public Trust & Dignity",
+    title: "Trust, Rights and Inclusion",
     description:
-      "Prioritizing citizen privacy, data rights, and equitable access across public service platforms.",
+      "Respecting privacy, data rights, human dignity, fairness and inclusive access in the design and use of digital systems.",
   },
   {
     number: "03",
-    title: "Capacity Empowerment",
+    title: "Institutional Capability",
     description:
-      "Building lasting internal competence so local institutions govern independently without permanent external reliance.",
+      "Strengthening internal knowledge, leadership and governance capability so institutions can take ownership of lasting change.",
   },
   {
     number: "04",
-    title: "Evidence-Led Rigor",
+    title: "Evidence-Informed Practice",
     description:
-      "Combining empirical regulatory research, practical diagnostics, and measurable benchmarks.",
+      "Drawing on relevant evidence, regulatory analysis, practical diagnostics and defined measures of progress.",
   },
 ];
 
 export const GOVERNANCE_AREAS = [
   {
     tag: "ADVISORY PRACTICE",
-    title: "Data Governance & Sovereign Capital",
+    title: "Data Governance and Digital Sovereignty",
     description1:
-      "Policy design, national data strategies, cross-border privacy & institutional data lakes.",
+      "Data governance frameworks, stewardship arrangements, data strategy, cross-border data considerations and institutional capability development.",
     description2:
-      "Advising ministries of communications, statistical bureaus, and multinational financial institutions on resilient sovereign data architectures.",
+      "Designed for governments, public institutions, regulators and enterprises seeking to govern data responsibly and derive greater institutional value from it.",
     image: Expertise1,
   },
   {
-    tag: "SPECIALIZED COUNCIL",
-    title: "AI Ethics & Algorithmic Oversight",
+    tag: "AI GOVERNANCE",
+    title: "Responsible AI and Algorithmic Oversight",
     description1:
-      "Responsible AI frameworks, auditing algorithmic bias & boardroom liability.",
+      "AI governance strategies, policies, risk classification, impact assessment, human oversight and assurance readiness.",
     description2:
-      "Directing continental roundtables for judicial officers, ministers, and public ombudsmen evaluating automated decision systems.",
+      "Designed for boards, executive leaders and oversight functions responsible for the accountable adoption and use of AI.",
     image: Expertise2,
   },
   {
-    tag: "EXECUTIVE EDUCATION",
-    title: "Institutional Capability & Leadership",
+    tag: "EXECUTIVE PROGRAMMES",
+    title: "Institutional Capability and Leadership",
     description1:
-      "Executive coaching, digital maturity diagnostics & change management.",
+      "Executive programmes, maturity assessments, change governance and practical implementation planning.",
     description2:
-      "Equipping permanent secretaries, board chairs, and general counsels with the strategic agility needed for the 2030 digital epoch.",
+      "Designed for senior public officials, board members, legal, compliance and risk leaders, and other professionals responsible for digital transformation.",
     image: Expertise3,
   },
 ];

@@ -47,10 +47,10 @@ export function InsightsPage() {
         title="Insights & Thought Leadership"
         description="Research, ideas and practical insight from Digital Governance Africa on AI governance, data governance, digital government and regulatory developments."
       />
-      <PageHero
+         <PageHero
         eyebrow="Insights"
-        title="Research, Ideas and Practical Insight"
-        description="Explore DGA perspective on artificial intelligence governance, digital government, data governance, digital transformation and regulatory developments"
+        title="Analysis, Ideas and Practical Perspectives"
+        description="Explore DGA's perspectives on AI governance, data governance, digital government, institutional transformation and relevant regulatory developments."
         backgroundImage={insightHeroImage}
         showDivider={false}
       />

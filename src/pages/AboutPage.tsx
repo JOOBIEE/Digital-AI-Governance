@@ -13,9 +13,9 @@ import {
   FOUNDATION_CARDS,
   APPROACH_STEPS,
   GOVERNANCE_AREAS,
+  DGA_DIFFERENCE,
 } from "../data/aboutPageData";
 import { Divider } from "../components/ui/Divider";
-import { AnimatedNumber } from "../components/ui/AnimatedNumber";
 import { Reveal } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import PageHero from "../components/home/PageHero";
@@ -23,56 +23,22 @@ import PageHero from "../components/home/PageHero";
 export function AboutPage() {
   const strategicPoints = [
     {
-      title: "Bridging Policy and Execution",
+      title: "Turning Policy into Delivery",
       description:
-        "Transforming national strategies into operational operating models that teams can implement daily.",
+        "Translate national and institutional strategies into clear decision rights, accountabilities, operating models and implementation arrangements.",
     },
     {
-      title: "Preventing Algorithmic Harm",
+      title: "Managing AI-Related Risk",
       description:
-        "Guarding against imported bias and ensuring AI tools deployed in public finance, healthcare, and education respect civil liberties.",
+        "Establish proportionate safeguards to identify and manage risks relating to bias, discrimination, privacy, security, transparency and fundamental rights.",
     },
     {
-      title: "Sovereignty and Data Capital",
+      title: "Data Sovereignty and Public Value",
       description:
-        "Treating sovereign data as a national strategic asset rather than an unmonetized byproduct.",
+        "Govern data as a strategic resource while protecting rights, strengthening stewardship and enabling appropriate access, sharing and reuse.",
     },
   ];
-  const stats = [
-    {
-      value: 54,
-      suffix: "+",
-      label: "NATIONS IN SCOPE",
-      description:
-        "Tailored for regional harmonization across AU directives and continental treaties.",
-      className: "pb-8",
-    },
-    {
-      value: 100,
-      suffix: "%",
-      label: "CONTEXTUALIZED",
-      description:
-        "Grounded in African legal, regulatory, and socio-economic frameworks.",
-      className: "border-l border-white/10 pb-8 pl-8",
-    },
-    {
-      value: 6,
-      suffix: "-Tier",
-      label: "FRAMEWORK™",
-      description:
-        "Discover, Design, Build, Implement, Enable, and Continuously Improve.",
-      className: "border-t border-white/10 pt-8",
-    },
-    {
-      value: null,
-      displayValue: "AI™",
-      label: "PROPRIETARY TECH",
-      description:
-        "Powered by GOVERNOVA AI™ for automated compliance and decision modeling.",
-      className: "border-l border-t border-white/10 pt-8 pl-8",
-      descriptionClass: "text-white/70",
-    },
-  ];
+
   return (
     <>
       <PageMeta
@@ -82,13 +48,12 @@ export function AboutPage() {
 
       <PageHero
         eyebrow="ABOUT DIGITAL GOVERNANCE AFRICA"
-        title="Shaping Trusted, Ethical & Sustainable Digital Institutions"
-        description="Digital Governance Africa (DGA) is a pan-African advisory and
-          institutional capability initiative. We partner with national
-          governments, regulatory authorities, state agencies, and prominent
-          enterprise boards to design responsible AI frameworks, modern data
-          governance structures, and resilient public administration systems
-          tailored to the African continent."
+        title="Shaping Trusted, Responsible and Resilient Digital Institutions"
+        description="Digital Governance Africa (DGA) is an African-focused advisory
+          and institutional capability development consultancy. We advise
+          governments, regulatory authorities, public institutions and
+          enterprises on digital governance, responsible AI, data governance
+          and institutional transformation within African contexts."
         backgroundImage={aboutHeroImage}
         primaryAction={{
           label: "Partner With Our Leadership",
@@ -105,8 +70,8 @@ export function AboutPage() {
         <Container>
           <SectionHeadingCentered
             eyebrow="Our Foundation"
-            title="Mission, Vision & Core Mandate"
-            subtitle="Addressing systemic gaps between rapid technological adoption and the regulatory, legal, and operational capacities of African institutions."
+            title="Purpose, Vision and Strategic Focus"
+            subtitle="DGA exists to strengthen the capabilities institutions need to govern digital transformation, data and artificial intelligence responsibly within diverse African contexts."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -148,20 +113,19 @@ export function AboutPage() {
             <div className="flex-1 text-left">
               <SectionHeading
                 eyebrow="THE STRATEGIC REALITY"
-                title="Why Governance is the Linchpin of Africa's Digital Agenda"
-                subtitle="Billions are invested into digital infrastructure, broadband rollout, and government enterprise systems across the continent. Yet, up to 70% of high-level digital transformations fail to realize their intended social or operational impact."
+                title="Why Governance Matters to Africa's Digital Agenda"
+                subtitle="Significant investment is being directed towards digital infrastructure, connectivity and digitally enabled public services across Africa. Technology and infrastructure are essential, but their institutional value also depends on effective governance, capable leadership and disciplined implementation."
                 titleClassName="text-white"
                 subtitleClassName="text-white/80"
               />
 
               <p className="mt-5 text-[16px] leading-relaxed text-white/80 sm:text-lg">
-                The bottleneck is rarely technology itself. The true barrier is{" "}
-                <strong className="font-semibold text-white">
-                  institutional governance
-                </strong>
-                : unclear accountability lines, absence of data stewardship
-                laws, inadequate executive oversight, and unstructured AI
-                integration.
+                Digital transformation can be constrained by unclear
+                accountability, fragmented data responsibilities, limited
+                executive oversight and insufficient governance of emerging
+                technologies. Addressing these issues requires governance
+                arrangements that connect strategic ambition with operational
+                delivery.
               </p>
 
               {/* Supporting points */}
@@ -188,33 +152,26 @@ export function AboutPage() {
               </div>
             </div>
 
-            {/* Right statistics */}
+            {/* Right: The DGA Difference */}
             <div className="flex-1 rounded-[25px] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-md sm:p-8 lg:p-10">
               <div className="flex items-center gap-4">
                 <span className="h-2 w-2 rounded-full bg-gold" />
-                <h4 className="text-lg font-semibold text-white">
-                  The DGA Differences
-                </h4>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                  The DGA Difference
+                </p>
               </div>
 
-              <div className="mt-10 grid grid-cols-2 gap-x-8">
-                {stats.map((stat) => (
-                  <div key={stat.label} className={stat.className}>
-                    <div className="mt-3 text-4xl font-extrabold tracking-tight text-gold sm:text-5xl">
-                      {stat.value !== null ? (
-                        <AnimatedNumber
-                          value={stat.value}
-                          suffix={stat.suffix}
-                        />
-                      ) : (
-                        stat.displayValue
-                      )}
-                    </div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
-                      {stat.label}
+              <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-0">
+                {DGA_DIFFERENCE.map((item) => (
+                  <div key={item.heading} className={item.className}>
+                    <p className="mt-3 text-xs font-bold uppercase tracking-[0.15em] text-gold">
+                      {item.tag}
                     </p>
-                    <p className={"mt-3 text-sm leading-relaxed text-white"}>
-                      {stat.description}
+                    <h4 className="mt-2 text-lg font-bold text-white">
+                      {item.heading}
+                    </h4>
+                    <p className="mt-3 text-sm leading-relaxed text-white">
+                      {item.description}
                     </p>
                   </div>
                 ))}
@@ -228,8 +185,8 @@ export function AboutPage() {
         <Container>
           <SectionHeadingCentered
             eyebrow="Governance & Stewardship"
-            title="Distinguished Board of Directors"
-            subtitle="Guiding continental strategy, statutory oversight, and sovereign alignment across 54 African nations"
+            title="Board of Directors"
+            subtitle="Providing strategic direction, governance oversight and stewardship in support of DGA's mission and responsible growth."
           />
 
           <div className="mt-12 grid px-12 gap-6 sm:grid-cols-2">
@@ -269,9 +226,9 @@ export function AboutPage() {
       <section className="bg-surface-alt py-20 sm:py-24">
         <Container>
           <SectionHeadingCentered
-            eyebrow="Ethics & Values"
-            title="Our Guiding Institutional Principles"
-            subtitle="Every Engagement, curriculum, and technological solution we deploy is measured against four foundational tenets."
+            eyebrow="Principles & Values"
+            title="Our Guiding Principles"
+            subtitle="Our advisory work, executive programmes and developing digital solutions are guided by four institutional principles."
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -301,11 +258,11 @@ export function AboutPage() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Our Expertise"
-              title="Leadership & Multi-Disciplinary Faculty"
-              subtitle="Bringing together former regulators, international jusrists,senior technologists,and enterprise governance directors."
+              title="Multidisciplinary Governance Expertise"
+              subtitle="DGA brings together expertise across governance, law, regulation, technology and institutional leadership to address complex digital, data and AI-related challenges."
             />
             <Button to="/programmes" variant="ghost">
-              View Executive Faculty & Programmes{" "}
+              View Executive Programmes{" "}
               <FiArrowRight aria-hidden size={16} />
             </Button>
           </div>
@@ -351,9 +308,8 @@ export function AboutPage() {
           <div className="flex flex-col items-center text-center">
             <SectionHeadingCentered
               eyebrow="Join Our Network"
-              title="Ready to Build a Trusted, Resillient & Future-Ready Institution?"
-              subtitle="Partner with Digital Governance Africa to strengthen your digital governance, adopt AI
-                responsibly, and build sustainable sovereign capability."
+              title="Ready to Strengthen Your Institution's Digital Governance?"
+              subtitle="Speak with Digital Governance Africa about strengthening governance, developing institutional capability and adopting artificial intelligence responsibly."
               className="max-w-6xl [&_h2]:text-white [&_p:last-child]:mx-auto [&_p:last-child]:max-w-2xl [& _p:last-child]:text-white/80  sm:[&_h2]:whitespace-nowrap"
               subtitleClassName="text-white/70"
             />
@@ -372,7 +328,7 @@ export function AboutPage() {
                 magnetic
                 className="w-full px-5 py-3 text-sm sm:w-auto"
               >
-                Schedule a Confidential Consultation
+                Start a Conversation
                 <FiArrowRight aria-hidden size={15} />
               </Button>
 
@@ -381,7 +337,7 @@ export function AboutPage() {
                 variant="secondary"
                 className="w-full px-5 py-3 text-sm sm:w-auto"
               >
-                Discover GOVERNOVA AI™
+                Explore GOVERNOVA AI™
               </Button>
             </motion.div>
           </div>

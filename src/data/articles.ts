@@ -1,44 +1,39 @@
 import type { Article } from "../types/content";
 
-// Placeholder-but-real-shaped articles, pending the client's actual content
-// per the Scope doc's "content + metadata + image direction provided
-// separately" note. Swap title/summary/body/date once the real copy lands —
-// the structure (category, reading time, gating) is final.
-
 export const ARTICLES: Article[] = [
   {
     slug: "governing-ai-in-african-institutions",
-    title: "Governing Artificial Intelligence in African Institutions",
+    title: "Governing AI in African Institutions",
     category: "AI Governance",
     date: "2026-05-12",
     readingTime: "7 min read",
     summary:
       "A practical look at how African governments and enterprises can build AI governance frameworks that balance innovation with accountability.",
-    body: `Artificial intelligence is moving from pilot projects to core institutional infrastructure across Africa — in tax administration, healthcare triage, credit scoring, and public service delivery. That shift changes what governance means: it is no longer a policy statement, but an operating discipline.
+    body: `Artificial intelligence is moving beyond experimentation as governments and organisations across Africa explore its use in public services, healthcare, financial services and other areas. As adoption grows, AI governance must become more than a policy statement: it must operate as a practical discipline embedded in institutional decision-making.
 
-Most institutions we work with start in the same place — enthusiasm for what AI can do, and no structured way to answer basic governance questions. Who owns a model's decisions? What happens when it's wrong? Who signs off before it touches a citizen or a customer?
+A common starting point is enthusiasm about AI's potential without a structured approach to fundamental governance questions. Who is accountable for an AI-assisted decision? What happens when a system produces an inaccurate or harmful outcome? Who must approve its use before it affects a citizen, customer or employee?
 
-A workable AI governance framework starts with three things: a clear inventory of where AI is actually in use (often broader than leadership assumes), a risk-tiering approach so oversight is proportionate rather than uniform, and a human-oversight model that's specific about who intervenes and when — not a general statement about "human-in-the-loop."
+An effective AI governance framework begins with three foundations: an inventory of AI systems and use cases; a risk-classification approach that applies proportionate oversight; and a clearly defined human-oversight model specifying who may intervene, when intervention is required and how decisions are escalated.
 
-None of this requires waiting for continental or national AI legislation to mature. Institutions that build this internal discipline now are the ones that will adapt fastest once formal regulation catches up.`,
+Institutions do not need to wait for comprehensive AI-specific legislation before establishing these disciplines. Existing legal and regulatory obligations may already apply, while early governance arrangements can place organisations in a stronger position to respond as AI policy, standards and regulation continue to evolve.`,
     gated: true,
     featured: true,
   },
   {
     slug: "data-as-a-strategic-national-asset",
-    title: "Data as a Strategic National Asset",
+    title: "Governing Data as a Strategic Asset",
     category: "Data Governance",
     date: "2026-03-24",
     readingTime: "6 min read",
     summary:
       "Why treating government and enterprise data as a governed strategic asset — not just an IT byproduct — is foundational to digital transformation.",
-    body: `Data governance is often framed as a compliance exercise — a response to a data protection law, or a prerequisite for an audit. That framing undersells what's actually at stake.
+    body: `Data governance is sometimes treated primarily as a compliance exercise — a response to data protection obligations or an audit requirement. This narrow framing overlooks its wider importance to institutional performance, digital transformation and informed decision-making.
 
-Data that is fragmented, poorly classified, and inconsistently owned is a direct constraint on institutional capability. Policy decisions get made on incomplete pictures. Digital services can't interoperate. AI initiatives stall because there's no trustworthy data to train or validate against.
+When data is fragmented, poorly classified or subject to unclear accountability, institutions may struggle to develop a reliable view of their operations. Policy decisions can be based on incomplete information, digital services may be difficult to integrate, and AI initiatives can be constrained by data that is unsuitable, inaccessible or insufficiently reliable for the intended purpose.
 
-Treating data as a strategic asset means assigning real ownership and stewardship — not just an IT custodian, but a business owner accountable for its quality and use. It means classifying data by sensitivity and value, not just storing it uniformly. And it means building the sharing models that let institutions collaborate without each one re-collecting the same information from citizens and businesses.
+Treating data as a strategic asset requires clearly defined accountability and stewardship. This includes assigning accountable business owners and data stewards, classifying data according to its sensitivity, purpose and institutional value, and establishing appropriate arrangements for access, quality, protection, retention and sharing.
 
-Institutions that get this right don't just reduce risk — they materially increase the value they can extract from digital transformation investments already underway.`,
+Effective data governance does more than reduce legal, operational and reputational risk. It enables institutions to make better use of their data and derive greater value from digital transformation investments.`,
     gated: true,
   },
   {
@@ -49,13 +44,13 @@ Institutions that get this right don't just reduce risk — they materially incr
     readingTime: "5 min read",
     summary:
       "Digital transformation programmes fail more often from weak governance than weak technology. Here's what that means for executive sponsors.",
-    body: `When a digital transformation programme stalls, the postmortem usually points at technology — the platform was wrong, the integration was too complex, the timeline was unrealistic. In our experience advising institutions across the continent, the more common root cause is governance, not technology.
+    body: `When a digital transformation programme stalls, attention often turns to the technology: the platform, the complexity of integration or the delivery timetable. These factors matter, but unclear accountability, slow decision-making and insufficient organisational ownership can be equally significant.
 
-Transformation programmes that succeed have a small number of governance features in common: a clear decision-rights model so trade-offs get resolved quickly rather than escalating indefinitely; an accountable senior sponsor who owns outcomes, not just budget; and a change-management track that's resourced as seriously as the technical build.
+Effective transformation programmes typically require clear decision rights so that trade-offs can be resolved promptly; an accountable senior sponsor responsible for outcomes as well as expenditure; and a properly resourced change-management workstream alongside the technical delivery.
 
-For executive sponsors, the practical implication is this: the questions worth asking in a steering committee aren't "is the platform on track," but "do we have clear ownership for the decisions this programme will force us to make," and "is someone accountable for whether this actually changes how the institution operates."
+Executive sponsors should therefore look beyond implementation milestones. Steering committees should also ask whether decision-making authority is clear, whether the programme has effective ownership and whether anyone is accountable for embedding lasting changes in how the institution operates.
 
-Technology is necessary. It has never been sufficient.`,
+Technology enables digital transformation. Governance determines how it is directed, adopted and sustained.`,
     gated: false,
   },
 ];
