@@ -1,5 +1,15 @@
 export const config = { runtime: "edge" };
 
+// Restrict this to the site(s) allowed to call this API now that the
+// frontend and this backend live on different domains.
+const ALLOWED_ORIGIN = "https://thedigitalgovernance.com";
+
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
 const SYSTEM_PROMPT =
   "You are GOVERNOVA AI, the website assistant for Digital Governance Africa (DGA). " +
   "You help visitors understand DGA's work in digital governance, responsible AI, data governance, " +
@@ -13,10 +23,16 @@ type IncomingMessage = {
 };
 
 export default async function handler(req: Request): Promise<Response> {
+  // Browsers send this automatically before a cross-origin POST — must
+  // answer it or the real request never gets sent.
+  if (req.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
+
   if (req.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
       status: 405,
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", ...CORS_HEADERS },
     });
   }
 
@@ -24,7 +40,7 @@ export default async function handler(req: Request): Promise<Response> {
   if (!apiKey) {
     return new Response(
       JSON.stringify({ error: "Server is missing GEMINI_API_KEY" }),
-      { status: 500, headers: { "content-type": "application/json" } },
+      { status: 500, headers: { "content-type": "application/json", ...CORS_HEADERS } },
     );
   }
 
@@ -35,14 +51,14 @@ export default async function handler(req: Request): Promise<Response> {
   } catch {
     return new Response(JSON.stringify({ error: "Invalid request body" }), {
       status: 400,
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", ...CORS_HEADERS },
     });
   }
 
   if (messages.length === 0) {
     return new Response(JSON.stringify({ error: "messages is required" }), {
       status: 400,
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", ...CORS_HEADERS },
     });
   }
 
@@ -88,7 +104,7 @@ export default async function handler(req: Request): Promise<Response> {
     console.error("Gemini error", geminiResponse?.status, errorText);
     return new Response(
       JSON.stringify({ error: "Gemini request failed", details: errorText }),
-      { status: 502, headers: { "content-type": "application/json" } },
+      { status: 502, headers: { "content-type": "application/json", ...CORS_HEADERS } },
     );
   }
 
@@ -100,12 +116,12 @@ export default async function handler(req: Request): Promise<Response> {
     console.error("Gemini empty response", JSON.stringify(data));
     return new Response(
       JSON.stringify({ error: "No response from Gemini" }),
-      { status: 502, headers: { "content-type": "application/json" } },
+      { status: 502, headers: { "content-type": "application/json", ...CORS_HEADERS } },
     );
   }
 
   return new Response(JSON.stringify({ content: text }), {
     status: 200,
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", ...CORS_HEADERS },
   });
 }
