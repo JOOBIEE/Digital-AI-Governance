@@ -77,6 +77,7 @@ export function InquiryForm({ variant, heading, description, submitLabel }: Inqu
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   function validate(current: FormValues) {
     const nextErrors: FieldErrors = {};
@@ -105,21 +106,50 @@ export function InquiryForm({ variant, heading, description, submitLabel }: Inqu
     setTouched((prev) => ({ ...prev, [field]: true }));
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setAttemptedSubmit(true);
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    // TODO: wire to a real backend/CRM endpoint once one is provisioned.
-    // Submissions currently go nowhere beyond this local success state.
     setSubmitting(true);
-    setTimeout(() => {
+    setSubmitError(null);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "3dd7d877-4246-4a79-ab93-21a3f6211101",
+          subject: `New ${variant} submission — ${values.name || "Website visitor"}`,
+          from_name: values.name,
+          Name: values.name,
+          Email: values.email,
+          Organisation: values.organisation,
+          Role: values.role || "—",
+          Country: values.country || "—",
+          "Area of Interest": values.areaOfInterest || "—",
+          Message: values.message || "—",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message || "Submission failed");
+      }
+
       setSubmitting(false);
       setSubmitted(true);
       setValues(EMPTY_VALUES);
-    }, 700);
+    } catch (error) {
+      console.error("Inquiry form submission failed", error);
+      setSubmitting(false);
+      setSubmitError(
+        "Something went wrong sending your message. Please try again, or email us directly.",
+      );
+    }
   }
 
   function shouldShowError(field: keyof FormValues) {
@@ -240,6 +270,12 @@ export function InquiryForm({ variant, heading, description, submitLabel }: Inqu
               <p className="mt-1 text-xs text-red-600">{errors.message}</p>
             )}
           </div>
+        )}
+
+                {submitError && (
+          <p className="text-sm text-red-600" role="alert">
+            {submitError}
+          </p>
         )}
 
         <button

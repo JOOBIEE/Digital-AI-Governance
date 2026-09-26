@@ -20,6 +20,10 @@ import { Reveal } from "../components/ui/Reveal";
 import { SectionHeading } from "../components/ui/SectionHeading";
 import PageHero from "../components/home/PageHero";
 
+// Temporarily hidden until the client provides updated director information.
+// Flip to true to bring the section back.
+const SHOW_BOARD_OF_DIRECTORS = false;
+
 export function AboutPage() {
   const strategicPoints = [
     {
@@ -181,47 +185,49 @@ export function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-white  py-20 sm:py-24">
-        <Container>
-          <SectionHeadingCentered
-            eyebrow="Governance & Stewardship"
-            title="Board of Directors"
-            subtitle="Providing strategic direction, governance oversight and stewardship in support of DGA's mission and responsible growth."
-          />
+            {SHOW_BOARD_OF_DIRECTORS && (
+        <section className="bg-white  py-20 sm:py-24">
+          <Container>
+            <SectionHeadingCentered
+              eyebrow="Governance & Stewardship"
+              title="Board of Directors"
+              subtitle="Providing strategic direction, governance oversight and stewardship in support of DGA's mission and responsible growth."
+            />
 
-          <div className="mt-12 grid px-12 gap-6 sm:grid-cols-2">
-            {DIRECTORS.map((person, index) => (
-              <Reveal key={person.slug} delayMs={Math.min(index * 100, 400)}>
-                <Link to={`/directors/${person.slug}`} className="block h-full">
-                  <Card className="group h-full overflow-hidden !p-0">
-                    <div className="relative overflow-hidden rounded-t-[25px]">
-                      <img
-                        src={person.image}
-                        alt={person.name}
-                        className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.02]"
-                      />
+            <div className="mt-12 grid px-12 gap-6 sm:grid-cols-2">
+              {DIRECTORS.map((person, index) => (
+                <Reveal key={person.slug} delayMs={Math.min(index * 100, 400)}>
+                  <Link to={`/directors/${person.slug}`} className="block h-full">
+                    <Card className="group h-full overflow-hidden !p-0">
+                      <div className="relative overflow-hidden rounded-t-[25px]">
+                        <img
+                          src={person.image}
+                          alt={person.name}
+                          className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.02]"
+                        />
 
-                      <span className="absolute bottom-4 left-4 rounded-full bg-gold px-3 py-1.5 text-xs font-semibold text-white">
-                        {person.location}
-                      </span>
-                    </div>
+                        <span className="absolute bottom-4 left-4 rounded-full bg-gold px-3 py-1.5 text-xs font-semibold text-white">
+                          {person.location}
+                        </span>
+                      </div>
 
-                    <div className="p-6 text-left">
-                      <h3 className="text-xl font-bold text-navy">
-                        {person.name}
-                      </h3>
+                      <div className="p-6 text-left">
+                        <h3 className="text-xl font-bold text-navy">
+                          {person.name}
+                        </h3>
 
-                      <p className="mt-1 text-sm font-semibold text-gold">
-                        {person.position}
-                      </p>
-                    </div>
-                  </Card>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
+                        <p className="mt-1 text-sm font-semibold text-gold">
+                          {person.position}
+                        </p>
+                      </div>
+                    </Card>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
 
       <section className="bg-surface-alt py-20 sm:py-24">
         <Container>

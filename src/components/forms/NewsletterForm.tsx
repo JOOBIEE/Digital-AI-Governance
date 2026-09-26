@@ -15,9 +15,9 @@ export function NewsletterForm({
   successMessage = "Thanks — you're on the list.",
 }: NewsletterFormProps) {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "success" | "error" | "submitting">("idle");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!/^\S+@\S+\.\S+$/.test(email)) {
@@ -25,9 +25,32 @@ export function NewsletterForm({
       return;
     }
 
-    // TODO: wire to a real newsletter/CRM endpoint once one is provisioned.
-    setStatus("success");
-    setEmail("");
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "3dd7d877-4246-4a79-ab93-21a3f6211101",
+          subject: "New newsletter signup — Digital Governance Africa",
+          from_name: "DGA Website Newsletter",
+          Email: email,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message || "Submission failed");
+      }
+
+      setStatus("success");
+      setEmail("");
+    } catch (error) {
+      console.error("Newsletter submission failed", error);
+      setStatus("error");
+    }
   }
 
   const isDark = variant === "dark";
@@ -62,16 +85,21 @@ export function NewsletterForm({
         />
         <button
           type="submit"
-          className="shrink-0 rounded-sm bg-gold px-5 py-2.5 text-sm font-semibold text-navy transition-colors duration-200 ease-standard hover:bg-gold-deep"
+          disabled={status === "submitting"}
+          className="shrink-0 rounded-sm bg-gold px-5 py-2.5 text-sm font-semibold text-navy transition-colors duration-200 ease-standard hover:bg-gold-deep disabled:opacity-70"
         >
-          {submitLabel}
+          {status === "submitting" ? "Sending…" : submitLabel}
         </button>
       </div>
       <p id="newsletter-status" role="status" className="mt-2 text-xs">
         {status === "success" && (
           <span className={isDark ? "text-white/80" : "text-ink-muted"}>{successMessage}</span>
         )}
-        {status === "error" && <span className="text-red-400">Enter a valid email address.</span>}
+        {status === "error" && (
+          <span className="text-red-400">
+            Something went wrong — please check your email and try again.
+          </span>
+        )}
       </p>
     </form>
   );
