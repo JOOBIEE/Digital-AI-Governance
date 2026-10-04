@@ -6,10 +6,10 @@ export const FAQS: Faq[] = [
     answer:
       "Our team typically responds to executive and institutional inquiries within two business days.",
   },
-  {
+    {
     question: "Do you work directly with government institutions?",
     answer:
-      "Yes — a significant share of our advisory and programme engagements are with government and public-sector institutions across Africa.",
+      "Yes - our advisory services and executive programmes are designed for government and public sector institutions across Africa as well as private-sector organisations.",
   },
   {
     question: "Can programmes be delivered as a private cohort for our organisation?",

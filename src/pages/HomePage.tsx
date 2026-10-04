@@ -185,13 +185,13 @@ export function HomePage() {
     <>
       <PageMeta
         title="Digital Governance Africa"
-        description="We support governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
+        description="We support governments, institutions and organisations to strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
       />
 
       <PageHero
         eyebrow="Digital Governance Africa"
         title="Governing Africa's Digital Future"
-        description="We support governments, institutions and organisations strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
+        description="We support governments, institutions and organisations to strengthen digital governance, adopt artificial intelligence responsibly and build trusted, resilient and future-ready institutions."
         backgroundImage={HeroImage}
         primaryAction={{
           label: "Explore Our Services",
@@ -366,8 +366,9 @@ export function HomePage() {
           </div>
 
           <p className="mt-10 text-center text-sm font-medium text-gold">
-            Discover &rarr; Design &rarr; Build &rarr; Implement &rarr; Enable
-            &rarr; Monitor &amp; Improve
+                      <p className="mt-10 text-center text-sm font-medium text-gold">
+            Shaping Trusted, Responsible and Resilient Digital Institutions
+          </p>
           </p>
         </Container>
       </section>
