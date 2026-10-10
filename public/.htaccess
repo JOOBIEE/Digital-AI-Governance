@@ -2,6 +2,11 @@
   RewriteEngine On
   RewriteBase /
 
+  # Keep the parked domain from showing the live site.
+  # Remove these two lines if that domain is ever put to real use.
+  RewriteCond %{HTTP_HOST} ^(www\.)?digitalgovernanceafrica\.com$ [NC]
+  RewriteRule ^ - [F,L]
+
   # Leave real files and directories alone.
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
