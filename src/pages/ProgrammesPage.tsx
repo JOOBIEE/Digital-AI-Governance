@@ -11,8 +11,8 @@ import { staggerDelay } from "../lib/motion";
 import { cn } from "../lib/cn";
 import { PROGRAMS, PROGRAMME_CATEGORIES } from "../data/programs";
 import governmentImage from "../assets/images/programmes_1.webp";
-import corporateImage from "../assets/images/corporate-governance.jpg";
-import legalImage from "../assets/images/legal-and-compliance.jpg";
+import corporateImage from "../assets/images/corporate-governance.webp";
+import legalImage from "../assets/images/legal-and-compliance.webp";
 
 type ProgrammeCategory = (typeof PROGRAMME_CATEGORIES)[number];
 
