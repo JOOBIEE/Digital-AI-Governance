@@ -10,27 +10,26 @@ import { Reveal } from "../components/ui/Reveal";
 import { staggerDelay } from "../lib/motion";
 import { cn } from "../lib/cn";
 import { PROGRAMS, PROGRAMME_CATEGORIES } from "../data/programs";
-import program1 from "../assets/images/programmes_1.webp";
-import program2 from "../assets/images/programmes_2.webp";
-import legalImage from "../assets/images/Expertise-image-3.webp";
+import governmentImage from "../assets/images/programmes_1.webp";
+import corporateImage from "../assets/images/corporate-governance.jpg";
+import legalImage from "../assets/images/legal-and-compliance.jpg";
 
 type ProgrammeCategory = (typeof PROGRAMME_CATEGORIES)[number];
 
 const CATEGORY_META: Record<ProgrammeCategory, { image: string; blurb: string }> = {
   "Government and Public Sector": {
-    image: program1,
+    image: governmentImage,
     blurb:
-      "Programmes for public-sector leaders governing digital transformation, data and national digital infrastructure.",
+      "For public-sector leaders governing digital services, data and national infrastructure.",
   },
   "Corporate Governance": {
-    image: program2,
-    blurb:
-      "Programmes for boards, executives and assurance leaders overseeing digital, data and AI.",
+    image: corporateImage,
+    blurb: "For boards and executives overseeing digital, data and AI.",
   },
   "Legal and Compliance": {
     image: legalImage,
     blurb:
-      "Programmes for legal and compliance teams navigating AI, regulation and digital change.",
+      "For legal and compliance teams navigating AI, regulation and digital change.",
   },
 };
 
@@ -77,7 +76,7 @@ export function ProgrammesPage() {
         </Container>
       </section>
 
-      <section className="py-20">
+      <section className="overflow-x-clip py-20">
         <Container>
           <p className="text-sm text-ink-muted">
             Select a programme area to view its programmes.
@@ -100,10 +99,10 @@ export function ProgrammesPage() {
                     aria-controls="programme-panel"
                     className={cn(
                       "group relative block h-[360px] w-full cursor-pointer overflow-hidden rounded-3xl text-left shadow-lg outline-none transition-all duration-500 ease-out sm:h-[420px]",
-                      "hover:-translate-y-2 hover:shadow-2xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-4",
+                      "hover:-translate-y-2 hover:shadow-2xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2",
                       "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
                       isActive
-                        ? "-translate-y-2 shadow-2xl ring-2 ring-gold ring-offset-4"
+                        ? "-translate-y-2 shadow-2xl ring-2 ring-gold ring-offset-2"
                         : "ring-1 ring-black/5",
                       active !== null && !isActive && "opacity-70 hover:opacity-100",
                     )}
@@ -128,7 +127,9 @@ export function ProgrammesPage() {
                         </span>
                       </div>
 
-                      <div>
+                      {/* Fixed-height text area on desktop, so every title
+                          starts on the same line and every link lines up. */}
+                      <div className="flex flex-col md:h-[12rem]">
                         <h3 className="text-2xl font-bold leading-tight text-white sm:text-[28px]">
                           {category}
                         </h3>
@@ -143,7 +144,7 @@ export function ProgrammesPage() {
                           {meta.blurb}
                         </p>
 
-                        <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold">
+                        <span className="mt-5 inline-flex items-center gap-2 self-start text-sm font-semibold text-gold md:mt-auto">
                           {isActive ? "Close" : "View programmes"}
                           {isActive ? (
                             <FiX aria-hidden size={16} />
